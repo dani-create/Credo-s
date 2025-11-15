@@ -78,7 +78,10 @@ Résultat :
 Objectif :
   Créer un menu déroulant moderne et accessible sur petit écran (< 992px)
   qui remplace le menu horizontal du desktop. Le menu s'affiche au clic sur
-  une icône burger à droite de la navbar.
+  une icône burger à droite de la navbar. L'icône est unique sur mobile et
+  déclenche l'ouverture d'un panneau vertical contenant les liens de
+  navigation; le panneau se ferme automatiquement au clic hors zone ou à la
+  sélection d'un lien.
 
 Problème Identifié :
   - Ancien menu déroulant n'était pas visible au clic
@@ -90,6 +93,7 @@ Fichiers Modifiés :
   → templates/nav.html
   → styles/nav.css
   → javascript/navigation.js
+  → javascript/main.js
 
 Changements Détaillés :
 
@@ -173,6 +177,13 @@ Résultat :
   ✓ Fermeture au clic dehors
   ✓ Accessibilité (aria-expanded)
   ✓ Responsive : < 992px = dropdown, >= 992px = menu horizontal
+
+Notes opérationnelles :
+  - La bascule du menu utilise désormais exclusivement la classe
+    `.menu-toggle.menu-toggle-right` pour éviter les conflits entre deux
+    boutons. Le script `main.js` a été mis à jour pour viser ce sélecteur.
+  - Le menu se ferme si on clique en dehors, et aussi après avoir cliqué sur
+    un lien (smooth scroll activé).
 
 
 ═══════════════════════════════════════════════════════════════════════════════
@@ -407,6 +418,8 @@ Credo_App/
 
 4. SEO et Analytics
    - Ajouter meta tags (og:image, og:description, favicon)
+  - Meta tags et JSON-LD ajoutés dans `index.html` (description, Open Graph, Twitter Card)
+  - `sitemap.xml` ajouté à la racine pour faciliter l'indexation
    - Google Analytics pour tracking des conversions
    - Structured data (JSON-LD) pour restaurant schema
    - Breadcrumbs dynamiques
