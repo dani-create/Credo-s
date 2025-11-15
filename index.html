@@ -480,3 +480,68 @@
   </div>
 </body>
 </html>
+
+<!-- QA: test rapide du menu burger mobile
+     Usage: ouvrir http://localhost:8888/?qa=burger_test
+     Le script simule un click sur .menu-toggle et affiche un bandeau indiquant si
+     la classe .main-nav.is-open a été ajoutée puis retirée.
+-->
+<script>
+if (typeof window !== 'undefined' && window.location.search.includes('qa=burger_test')) {
+  (function(){
+    // Force mobile breakpoint visual (useful if testing in desktop browser)
+    document.documentElement.style.width = '375px';
+    document.documentElement.style.overflowX = 'hidden';
+
+    function showResult(text, ok) {
+      const el = document.createElement('div');
+      el.setAttribute('aria-live','polite');
+      el.style.position = 'fixed';
+      el.style.left = '12px';
+      el.style.right = '12px';
+      el.style.top = '12px';
+      el.style.zIndex = '9999';
+      el.style.padding = '12px 16px';
+      el.style.borderRadius = '8px';
+      el.style.color = ok ? '#0a0' : '#700';
+      el.style.background = ok ? 'rgba(0,255,100,0.08)' : 'rgba(255,0,0,0.06)';
+      el.style.backdropFilter = 'blur(6px)';
+      el.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)';
+      el.textContent = text;
+      document.body.appendChild(el);
+      setTimeout(()=> el.remove(), 6000);
+    }
+
+    const toggle = document.querySelector('.menu-toggle.menu-toggle-right') || document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.main-nav');
+    if (!toggle || !nav) {
+      showResult('Échec QA: toggle ou .main-nav introuvable', false);
+      return;
+    }
+
+    // ensure closed state
+    nav.classList.remove('is-open');
+
+    // simulate click and check
+    toggle.click();
+    setTimeout(()=>{
+      const opened = nav.classList.contains('is-open');
+      if (!opened) {
+        showResult('Échec QA: après 1er click, .main-nav.is-open absent', false);
+        return;
+      }
+      // now close
+      toggle.click();
+      setTimeout(()=>{
+        const closed = !nav.classList.contains('is-open');
+        if (closed) {
+          showResult('Succès QA: menu mobile ouverture/fermeture OK', true);
+        } else {
+          showResult('Échec QA: la fermeture n\'a pas retiré .is-open', false);
+        }
+      }, 300);
+    }, 300);
+  })();
+}
+</script>
+</html>
