@@ -40,7 +40,7 @@
   // ========================================
   // Menu mobile : toggle de la navigation
   // ========================================
-  const menuToggle = document.querySelector('.menu-toggle');
+  const menuToggle = document.querySelector('.menu-toggle.menu-toggle-right');
   const mainNav = document.querySelector('.main-nav');
 
   function toggleMenu() {
