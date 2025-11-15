@@ -226,6 +226,22 @@
   height: auto;
 }
 
+/* In light theme make the delivery info container white for contrast */
+body.theme-light .delivery-info {
+  background: #ffffff;
+  color: var(--color-primary-text);
+  padding: 8px 12px;
+  border-radius: 14px;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Ensure icon wrapper stands out on light theme */
+body.theme-light .delivery-icon-wrapper {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
 .trust-badge {
   bottom: 10%;
   right: 40px;
@@ -713,6 +729,10 @@
 .cart-item img { width:56px; height:56px; object-fit:cover; border-radius:8px; }
 .cart-actions { display:flex; gap:10px; justify-content:center; margin-top:12px; }
 
+.cart-info { flex: 1; }
+.cart-price { font-size: 13px; margin-top: 6px; color: var(--color-primary-text); }
+.cart-total-row { justify-content: space-between; align-items: center; }
+
 /* focus styles for accessible focus trap */
 .order-modal-card :focus, .cart-modal .order-modal-card :focus { outline: 3px solid rgba(255, 220, 0, 0.4); outline-offset: 4px; }
 
@@ -839,6 +859,25 @@
   object-fit: cover;
   cursor: pointer;
   flex: 0 0 auto;
+}
+
+.order-modal-thumb {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.order-modal-thumb-img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.order-modal-thumb-label {
+  color: #fff;
+  font-size: 13px;
+  margin-top: 8px;
 }
 
 /* Floating buttons (gallery & help) and mini-cart */

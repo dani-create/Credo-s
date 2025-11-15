@@ -91,10 +91,6 @@
     if (dish.prices && typeof dish.prices === 'object') {
       const pricesWrap = document.createElement('div');
       pricesWrap.className = 'order-modal-prices';
-      pricesWrap.style.display = 'flex';
-      pricesWrap.style.gap = '8px';
-      pricesWrap.style.justifyContent = 'center';
-      pricesWrap.style.flexWrap = 'wrap';
 
       Object.entries(dish.prices).forEach(([variant, p], i) => {
         const btn = document.createElement('button');
@@ -172,30 +168,19 @@
     intro.textContent = 'Choisissez votre plat préféré parmi nos délicieuses options !';
 
     const scroller = document.createElement('div');
-    scroller.style.display = 'flex';
-    scroller.style.gap = '12px';
-    scroller.style.overflowX = 'auto';
-    scroller.style.padding = '12px 6px';
-    scroller.style.width = '100%';
+    scroller.className = 'order-modal-gallery';
 
     DISHES.forEach((d) => {
       const thumbWrapper = document.createElement('div');
-      thumbWrapper.style.flex = '0 0 auto';
-      thumbWrapper.style.textAlign = 'center';
+      thumbWrapper.className = 'order-modal-thumb';
 
       const thumb = document.createElement('img');
+      thumb.className = 'order-modal-thumb-img';
       thumb.src = d.img;
       thumb.alt = d.name;
-      thumb.style.width = '96px';
-      thumb.style.height = '96px';
-      thumb.style.borderRadius = '50%';
-      thumb.style.objectFit = 'cover';
-      thumb.style.cursor = 'pointer';
 
       const label = document.createElement('div');
-      label.style.color = '#fff';
-      label.style.fontSize = '13px';
-      label.style.marginTop = '8px';
+      label.className = 'order-modal-thumb-label';
       label.textContent = d.name;
 
       thumb.addEventListener('click', () => {
@@ -286,12 +271,11 @@
       img.alt = it.name;
 
       const info = document.createElement('div');
-      info.style.flex = '1';
+      info.className = 'cart-info';
       const title = document.createElement('div');
       title.innerHTML = `<strong>${it.name}${it.variant ? ' — ' + it.variant : ''}</strong>`;
       const priceEl = document.createElement('div');
-      priceEl.style.fontSize = '13px';
-      priceEl.style.marginTop = '6px';
+      priceEl.className = 'cart-price';
       priceEl.textContent = it.price ? formatPrice(it.price) : '';
       info.appendChild(title);
       info.appendChild(priceEl);
@@ -322,9 +306,7 @@
 
     // Total row
     const totalRow = document.createElement('div');
-    totalRow.className = 'cart-item';
-    totalRow.style.justifyContent = 'space-between';
-    totalRow.style.alignItems = 'center';
+    totalRow.className = 'cart-item cart-total-row';
     const totalLabel = document.createElement('div');
     totalLabel.innerHTML = '<strong>Total</strong>';
     const totalValue = document.createElement('div');
