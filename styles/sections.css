@@ -84,32 +84,18 @@
 }
 
 .hero-divider {
-  width: 390px;
-  height: 6px;
-  position: relative;
-  margin: 12px 0;
+  /* Divider supprimé - design épuré */
+  display: none;
 }
 
 .hero-divider::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 50%;
-  height: 100%;
-  background-color: #fdc83f;
-  border-radius: 14px 0 0 14px;
+  /* Supprimé */
+  display: none;
 }
 
 .hero-divider::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 50%;
-  height: 100%;
-  background-color: var(--color-dark);
-  border-radius: 0 14px 14px 0;
+  /* Supprimé */
+  display: none;
 }
 
 .hero-tagline {
@@ -306,8 +292,7 @@
   }
   
   .hero-divider {
-    width: 100%;
-    max-width: 280px;
+    display: none;
   }
   
   .hero-image-container {

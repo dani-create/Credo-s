@@ -186,15 +186,17 @@
       });
     }
 
-    // Fermer les modales au clic sur le bouton de fermeture
-    document.querySelectorAll('.policies-modal-close').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const modal = e.target.closest('.policies-modal');
-        if (modal) {
-          modal.classList.remove('open');
-          document.body.style.overflow = '';
-        }
-      });
+    // Délégation : fermeture sur tous les boutons close
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('.policies-modal-close')) {
+        const modals = document.querySelectorAll('.policies-modal');
+        modals.forEach(m => {
+          if (m.classList.contains('open')) {
+            m.classList.remove('open');
+            document.body.style.overflow = '';
+          }
+        });
+      }
     });
 
     // Fermer les modales au clic en dehors
@@ -205,6 +207,19 @@
           document.body.style.overflow = '';
         }
       });
+    });
+
+    // Fermer toutes les modales policies avec Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        const modals = document.querySelectorAll('.policies-modal');
+        modals.forEach(m => {
+          if (m.classList.contains('open')) {
+            m.classList.remove('open');
+            document.body.style.overflow = '';
+          }
+        });
+      }
     });
   });
 })();

@@ -336,15 +336,18 @@
     }
   }
 
-  // Close help modal on click of close buttons
+  // Délégation : fermeture sur tous les boutons close
   document.addEventListener('click', function (e) {
     if (e.target.closest('.order-modal-close')) {
-      const helpModal = document.getElementById('help-modal');
-      if (helpModal && helpModal.classList.contains('open')) {
-        helpModal.classList.remove('open');
-        helpModal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
+      // Ferme toutes les modales ouvertes
+      const modals = document.querySelectorAll('.order-modal, .cart-modal, .help-modal');
+      modals.forEach(m => {
+        if (m.classList.contains('open')) {
+          m.classList.remove('open');
+          m.setAttribute('aria-hidden', 'true');
+        }
+      });
+      document.body.style.overflow = '';
     }
   });
 
@@ -367,17 +370,31 @@
   if (sendCartEmailBtn) sendCartEmailBtn.addEventListener('click', (e) => { e.preventDefault(); sendCartViaEmail(); });
   if (emptyCartBtn) emptyCartBtn.addEventListener('click', (e) => { e.preventDefault(); emptyCart(); });
 
-  // Close help/cart/order modals via close button (delegated)
-  document.addEventListener('click', function (e) {
-    if (e.target.closest('.order-modal-close')) {
-      // close any open modal
-      const helpModal = document.getElementById('help-modal');
-      if (helpModal && helpModal.classList.contains('open')) { helpModal.classList.remove('open'); helpModal.setAttribute('aria-hidden','true'); }
-      if (modal && modal.classList.contains('open')) { closeModal(); }
-      if (cartModal && cartModal.classList.contains('open')) { closeCartModal(); }
-      document.body.style.overflow = '';
-    }
-  });
+  // Fermer modale commande sur clic extérieur
+  if (modal) {
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+  }
+
+  // Fermer modale panier sur clic extérieur
+  if (cartModal) {
+    cartModal.addEventListener('click', function (e) {
+      if (e.target === cartModal) closeCartModal();
+    });
+  }
+
+  // Fermer modale aide sur clic extérieur
+  const helpModal = document.getElementById('help-modal');
+  if (helpModal) {
+    helpModal.addEventListener('click', function (e) {
+      if (e.target === helpModal) {
+        helpModal.classList.remove('open');
+        helpModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    });
+  }
 
   // Focus trap implementation
   let currentTrap = null;
@@ -435,17 +452,23 @@
     }
   });
 
-  // Fermer modal sur bouton
-  closeBtn.addEventListener('click', closeModal);
+  // Fermer modal commande sur bouton close
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-  // Fermer en clickant hors de la carte
-  modal.addEventListener('click', function (e) {
-    if (e.target === modal) closeModal();
-  });
+  // (déplacé plus haut, pour harmonisation)
 
-  // Fermer avec Escape
+  // Fermer toutes les modales ouvertes avec Escape
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    if (e.key === 'Escape') {
+      const modals = document.querySelectorAll('.order-modal, .cart-modal, .help-modal');
+      modals.forEach(m => {
+        if (m.classList.contains('open')) {
+          m.classList.remove('open');
+          m.setAttribute('aria-hidden', 'true');
+        }
+      });
+      document.body.style.overflow = '';
+    }
   });
 
   // Actualiser les descriptions de plats quand la langue change

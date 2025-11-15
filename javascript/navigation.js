@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const menuToggle = document.querySelector('.menu-toggle');
+  const menuToggle = document.querySelector('.menu-toggle.menu-toggle-right');
   const mainNav = document.querySelector('.main-nav');
   const navLinks = document.querySelectorAll('.main-nav a');
   const siteHeader = document.querySelector('.site-header');
