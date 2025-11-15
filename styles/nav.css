@@ -174,7 +174,7 @@
   .main-nav.is-open a {
     color: var(--color-accent-yellow);
     padding: 10px 16px;
-    border-radius: 40%;
+    border-radius: 20px;
     width: auto;
     display: inline-block;
     background-color: rgba(0, 0, 0, 0.4);
