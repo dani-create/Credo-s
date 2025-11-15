@@ -636,6 +636,10 @@
   
   .dishes-grid {
     scroll-snap-type: x mandatory;
+    /* Ensure first card is fully visible on small screens */
+    padding-left: 16px;
+    padding-right: 16px;
+    scroll-padding-left: 16px;
   }
 }
 
@@ -783,6 +787,33 @@
   text-align: center;
   font-size: 13px;
   color: #bbbbbb;
+}
+
+/* Variant buttons inside order modal */
+.order-modal-prices {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.order-variant-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.order-variant-btn.selected {
+  background: #FFD700;
+  color: #0b0618;
+  border-color: rgba(0,0,0,0.06);
 }
 
 @media (max-width: 768px) {

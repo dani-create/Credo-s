@@ -16,17 +16,25 @@
   const WHATSAPP_NUMBER = '243833589772'; // format sans + et sans espaces pour wa.me
   const EMAIL_ADDRESS = 'Credosfood@gmail.com';
 
+  function formatPrice(n) {
+    try {
+      return new Intl.NumberFormat('fr-FR').format(n) + ' FC';
+    } catch (e) {
+      return String(n) + ' FC';
+    }
+  }
+
   // Liste des plats (pour la commande générale)
-  const DISHES = [
-     { name: 'Sandwich', img: 'images/272a72cc85e504f496f31ebd406db1538266507a.png', desc: 'Sandwich généreux, pain toasté, viande savoureuse et condiments maison — un classique réconfortant.' },
-     { name: 'Salade', img: 'images/a731aaefa4520d8d8ba883a416fd376f2a7ffcb6.png', desc: 'Salade croquante mêlant légumes frais, herbes parfumées et une vinaigrette légère — parfaite pour une pause saine.' },
-     { name: 'Burger', img: 'images/888bc5a5f08099437edc690608679c73ae117689.png', desc: 'Burger juteux garni de fromage fondant, pickles croquants et notre sauce secrète — une bouchée inoubliable.' },
-     { name: 'Poulet', img: 'images/2a10d093087dbfd5831ac4b2a598934cbea8c909.png', desc: 'Poulet croustillant, mariné aux épices locales et frit à la perfection — croustillant dehors, tendre dedans.' },
-     // Nouveaux plats populaires (images locales)
-     { name: 'Burrito', img: 'images/burrito.jpg', desc: 'Burrito généreux garni de riz, haricots, viande épicée, légumes et sauce crémeuse — nourrissant et plein de saveurs.' },
-     { name: 'Shawarma', img: 'images/shawarma.jpg', desc: 'Shawarma tendre, finement tranché et servi avec pain pita, légumes frais et sauce à l\'ail — la street-food revisitée.' },
-     { name: 'Tenders', img: 'images/tenders.jpg', desc: 'Tenders dorés et croustillants, bien assaisonnés — parfaits à partager ou à savourer seul.' }
-  ];
+    const DISHES = [
+      { name: 'Sandwich', img: 'images/272a72cc85e504f496f31ebd406db1538266507a.png', desc: 'Sandwich généreux, pain toasté, viande savoureuse et condiments maison — un classique réconfortant.', prices: { Lite: 3500, Bazooka: 6000 } },
+      { name: 'Salade', img: 'images/a731aaefa4520d8d8ba883a416fd376f2a7ffcb6.png', desc: 'Salade croquante mêlant légumes frais, herbes parfumées et une vinaigrette légère — parfaite pour une pause saine.', prices: { Accompagnement: 6000 } },
+      { name: 'Burger', img: 'images/888bc5a5f08099437edc690608679c73ae117689.png', desc: 'Burger juteux garni de fromage fondant, pickles croquants et notre sauce secrète — une bouchée inoubliable.', prices: { Simple: 10000, 'Double Cheese': 20000 } },
+      { name: 'Poulet', img: 'images/2a10d093087dbfd5831ac4b2a598934cbea8c909.png', desc: 'Poulet croustillant, mariné aux épices locales et frit à la perfection — croustillant dehors, tendre dedans.' },
+      // Nouveaux plats populaires (images locales)
+      { name: 'Burrito', img: 'images/burrito.jpg', desc: 'Burrito généreux garni de riz, haricots, viande épicée, légumes et sauce crémeuse — nourrissant et plein de saveurs.', prices: { Mini: 10000, Complet: 20000 } },
+      { name: 'Shawarma', img: 'images/shawarma.jpg', desc: 'Shawarma tendre, finement tranché et servi avec pain pita, légumes frais et sauce à l\'ail — la street-food revisitée.', prices: { Mini: 10000, Complet: 20000 } },
+      { name: 'Tenders', img: 'images/tenders.jpg', desc: 'Tenders dorés et croustillants, bien assaisonnés — parfaits à partager ou à savourer seul.' }
+    ];
 
   function openModal() {
     modal.classList.add('open');
@@ -78,6 +86,35 @@
     modalBody.appendChild(img);
     modalBody.appendChild(desc);
 
+    // Variant / Price selector (si présent)
+    let selectedVariant = null;
+    if (dish.prices && typeof dish.prices === 'object') {
+      const pricesWrap = document.createElement('div');
+      pricesWrap.className = 'order-modal-prices';
+      pricesWrap.style.display = 'flex';
+      pricesWrap.style.gap = '8px';
+      pricesWrap.style.justifyContent = 'center';
+      pricesWrap.style.flexWrap = 'wrap';
+
+      Object.entries(dish.prices).forEach(([variant, p], i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'order-variant-btn' + (i === 0 ? ' selected' : '');
+        btn.dataset.variant = variant;
+        btn.dataset.price = String(p);
+        btn.textContent = `${variant} — ${formatPrice(p)}`;
+        btn.addEventListener('click', function () {
+          Array.from(pricesWrap.querySelectorAll('.order-variant-btn')).forEach(b => b.classList.remove('selected'));
+          this.classList.add('selected');
+          selectedVariant = { name: this.dataset.variant, price: Number(this.dataset.price) };
+        });
+        // default select first
+        if (i === 0) selectedVariant = { name: variant, price: p };
+        pricesWrap.appendChild(btn);
+      });
+      modalBody.appendChild(pricesWrap);
+    }
+
     // Buttons (WhatsApp + Email)
     const waBtn = document.createElement('a');
     waBtn.className = 'order-btn whatsapp';
@@ -86,7 +123,8 @@
 
     waBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const text = encodeURIComponent(`Bonjour, je souhaite commander : ${dish.name}`);
+      const variantText = selectedVariant ? ` (${selectedVariant.name} - ${formatPrice(selectedVariant.price)})` : '';
+      const text = encodeURIComponent(`Bonjour, je souhaite commander : ${dish.name}${variantText}`);
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, '_blank');
     });
 
@@ -97,8 +135,9 @@
 
     emBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const subject = encodeURIComponent(`Commande - ${dish.name}`);
-      const body = encodeURIComponent(`Bonjour,\n\nJe souhaite commander : ${dish.name}.\n\nMerci.`);
+      const variantText = selectedVariant ? ` (${selectedVariant.name} - ${formatPrice(selectedVariant.price)})` : '';
+      const subject = encodeURIComponent(`Commande - ${dish.name}${selectedVariant ? ' - ' + selectedVariant.name : ''}`);
+      const body = encodeURIComponent(`Bonjour,\n\nJe souhaite commander : ${dish.name}${variantText}.\n\nMerci.`);
       window.location.href = `mailto:${EMAIL_ADDRESS}?subject=${subject}&body=${body}`;
     });
 
@@ -111,7 +150,9 @@
     addBtn.textContent = 'Ajouter au panier';
     addBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      addToCart({ name: dish.name, img: dish.img });
+      const variant = selectedVariant ? selectedVariant.name : null;
+      const price = selectedVariant ? Number(selectedVariant.price) : (dish.price || (dish.prices ? Object.values(dish.prices)[0] : 0));
+      addToCart({ name: dish.name, img: dish.img, variant: variant, price: price });
       // feedback
       addBtn.textContent = 'Ajouté ✓';
       setTimeout(() => { addBtn.textContent = 'Ajouter au panier'; }, 1200);
@@ -180,7 +221,18 @@
     const name = el.dataset.dishName || el.getAttribute('data-dish-name') || 'Plat';
     const desc = el.dataset.dishDesc || el.getAttribute('data-dish-desc') || '';
     const img = el.dataset.dishImg || el.getAttribute('data-dish-img') || '';
-    buildDishView({ name: name, img: img, desc: desc });
+    // attempt to read inline price metadata from element
+    let prices = null;
+    const raw = el.dataset.dishPrices || el.getAttribute('data-dish-prices');
+    if (raw) {
+      try { prices = JSON.parse(raw); } catch (e) { prices = null; }
+    }
+    // fallback to server-side DISHES metadata if available
+    if (!prices) {
+      const found = DISHES.find(d => d.name && d.name.toLowerCase() === name.toLowerCase());
+      if (found && found.prices) prices = found.prices;
+    }
+    buildDishView({ name: name, img: img, desc: desc, prices: prices });
     openModal();
   }
 
@@ -224,7 +276,7 @@
       cartListEl.appendChild(empty);
       return;
     }
-
+    let total = 0;
     CART.forEach((it, idx) => {
       const row = document.createElement('div');
       row.className = 'cart-item';
@@ -235,7 +287,14 @@
 
       const info = document.createElement('div');
       info.style.flex = '1';
-      info.innerHTML = `<strong>${it.name}</strong>`;
+      const title = document.createElement('div');
+      title.innerHTML = `<strong>${it.name}${it.variant ? ' — ' + it.variant : ''}</strong>`;
+      const priceEl = document.createElement('div');
+      priceEl.style.fontSize = '13px';
+      priceEl.style.marginTop = '6px';
+      priceEl.textContent = it.price ? formatPrice(it.price) : '';
+      info.appendChild(title);
+      info.appendChild(priceEl);
 
       const remove = document.createElement('button');
       remove.className = 'order-btn';
@@ -257,7 +316,22 @@
       row.appendChild(info);
       row.appendChild(remove);
       cartListEl.appendChild(row);
+
+      total += (Number(it.price) || 0);
     });
+
+    // Total row
+    const totalRow = document.createElement('div');
+    totalRow.className = 'cart-item';
+    totalRow.style.justifyContent = 'space-between';
+    totalRow.style.alignItems = 'center';
+    const totalLabel = document.createElement('div');
+    totalLabel.innerHTML = '<strong>Total</strong>';
+    const totalValue = document.createElement('div');
+    totalValue.innerHTML = `<strong>${formatPrice(total)}</strong>`;
+    totalRow.appendChild(totalLabel);
+    totalRow.appendChild(totalValue);
+    cartListEl.appendChild(totalRow);
   }
 
   function openCartModal() {
@@ -281,28 +355,44 @@
   // send cart grouped via WhatsApp or Email
   function sendCartViaWhatsApp() {
     if (CART.length === 0) return;
-    // Aggregate quantities per dish
-    const counts = CART.reduce((acc, it) => {
-      const key = it.name.toLowerCase();
-      acc[key] = (acc[key] || 0) + 1;
-      return acc;
-    }, {});
-    const parts = Object.entries(counts).map(([name, qty]) => `${qty} ${name}${qty > 1 ? 's' : ''}`);
-    const msg = `Bonjour, je souhaite commander :\n${parts.join(', ')}`;
+    // Aggregate by name+variant and include prices
+    const agg = {};
+    CART.forEach(it => {
+      const key = `${it.name}${it.variant ? ' | ' + it.variant : ''}`;
+      if (!agg[key]) agg[key] = { name: it.name, variant: it.variant, qty: 0, price: Number(it.price) || 0 };
+      agg[key].qty += 1;
+    });
+    const lines = [];
+    let total = 0;
+    Object.entries(agg).forEach(([k, v]) => {
+      const subtotal = v.qty * (v.price || 0);
+      lines.push(`${v.qty} × ${v.name}${v.variant ? ' (' + v.variant + ')' : ''} — ${formatPrice(v.price)} chacun — sous-total ${formatPrice(subtotal)}`);
+      total += subtotal;
+    });
+    lines.push('Total: ' + formatPrice(total));
+    const msg = `Bonjour, je souhaite commander :\n${lines.join('\n')}`;
     const text = encodeURIComponent(msg);
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, '_blank');
   }
 
   function sendCartViaEmail() {
     if (CART.length === 0) return;
-    const counts = CART.reduce((acc, it) => {
-      const key = it.name.toLowerCase();
-      acc[key] = (acc[key] || 0) + 1;
-      return acc;
-    }, {});
-    const parts = Object.entries(counts).map(([name, qty]) => `${qty} ${name}${qty > 1 ? 's' : ''}`);
-    const subject = encodeURIComponent('Commande - Credo\'s');
-    const bodyText = `Bonjour,\n\nJe souhaite commander :\n${parts.join(', ')}\n\nMerci.`;
+    const agg = {};
+    CART.forEach(it => {
+      const key = `${it.name}${it.variant ? ' | ' + it.variant : ''}`;
+      if (!agg[key]) agg[key] = { name: it.name, variant: it.variant, qty: 0, price: Number(it.price) || 0 };
+      agg[key].qty += 1;
+    });
+    const lines = [];
+    let total = 0;
+    Object.entries(agg).forEach(([k, v]) => {
+      const subtotal = v.qty * (v.price || 0);
+      lines.push(`${v.qty} × ${v.name}${v.variant ? ' (' + v.variant + ')' : ''} — ${formatPrice(v.price)} chacun — sous-total ${formatPrice(subtotal)}`);
+      total += subtotal;
+    });
+    lines.push('Total: ' + formatPrice(total));
+    const subject = encodeURIComponent("Commande - Credo's");
+    const bodyText = `Bonjour,\n\nJe souhaite commander :\n${lines.join('\n')}\n\nMerci.`;
     const body = encodeURIComponent(bodyText);
     window.location.href = `mailto:${EMAIL_ADDRESS}?subject=${subject}&body=${body}`;
   }
