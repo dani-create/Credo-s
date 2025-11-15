@@ -398,7 +398,7 @@
 .dish-description {
   font-size: 14px;
   line-height: 1.4;
-  color: #f2f2f2;
+  color: var(--color-primary-text);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -429,7 +429,7 @@
 }
 
 .dish-card .dish-title { font-size: 20px; margin-bottom: 8px; }
-.dish-card .dish-description { font-size: 14px; line-height: 1.45; color: #f2f2f2; }
+.dish-card .dish-description { font-size: 14px; line-height: 1.45; color: var(--color-primary-text); }
 
 .card-chicken {
   width: 340px;
@@ -457,27 +457,30 @@
   font-family: 'Unna', serif; 
   font-size: 36px; 
   line-height: 1.2; 
-  color: #0b0618; 
+  color: var(--color-primary-text); 
 }
 
 .card-chicken .dish-description { 
   font-family: 'Roboto Mono', monospace; 
   font-size: 16px; 
+  color: var(--color-primary-text);
 }
 
 .card-chicken .dish-button {
   align-self: flex-start;
-  border: 1px solid #0b0618;
+  border: 1px solid rgba(0,0,0,0.08);
   padding: 12px 24px;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   color: var(--color-primary-text);
+  background: var(--color-accent-yellow-bright);
+  border-radius: 20px;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .card-chicken .dish-button:hover { 
-  background-color: #0b0618; 
-  color: #fff; 
+  background-color: #000000; 
+  color: var(--color-accent-yellow);
 }
 
 .card-sides {
