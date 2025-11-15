@@ -13,6 +13,10 @@
     if (!mainNav) return;
     mainNav.classList.toggle('is-open');
     menuToggle.setAttribute('aria-expanded', String(mainNav.classList.contains('is-open')));
+    // prevent background scroll when nav is open on mobile
+    if (document.body) {
+      document.body.classList.toggle('nav-open', mainNav.classList.contains('is-open'));
+    }
   }
 
   // Attach click on the toggle if present

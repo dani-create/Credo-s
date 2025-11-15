@@ -1,0 +1,48 @@
+/* Overrides and enhancements for mobile nav and global UX */
+
+/* Prevent background scroll when nav open */
+body.nav-open {
+  height: 100vh;
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* Rounded burger + animations */
+.menu-toggle.menu-toggle-right {
+  background: rgba(255, 212, 0, 0.12) !important;
+  border: 1px solid rgba(255,255,255,0.04) !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12) !important;
+  transition: transform 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+.menu-toggle.menu-toggle-right img { width: 22px !important; height: 22px !important; }
+.menu-toggle.menu-toggle-right:hover { transform: scale(1.06) !important; box-shadow: 0 10px 28px rgba(0,0,0,0.18) !important; }
+.menu-toggle.menu-toggle-right:active { transform: scale(0.98) !important; }
+
+/* Mobile nav animated transition (smooth open/close) */
+@media (max-width: 992px) {
+  .main-nav {
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 220ms ease, transform 220ms ease, visibility 220ms;
+  }
+  .main-nav.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    visibility: visible;
+  }
+}
+
+/* Slight smoother focus outlines for accessibility */
+.menu-toggle:focus { outline: 3px solid rgba(255, 212, 0, 0.18); outline-offset: 2px; }
+.main-nav a:focus { outline: 3px solid rgba(255,255,255,0.08); outline-offset: 2px; }
