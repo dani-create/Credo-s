@@ -1,0 +1,187 @@
+/* ========================================
+   Navigation / Header Styles
+   ======================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 6px 0;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.22s ease;
+  box-shadow: none;
+}
+
+.site-header.sticky {
+  /* Fond noir semi-transparent lorsque la navbar est sticky */
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.28);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* État hero: navbar bleu (couleur de base) */
+.site-header.in-hero {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* État scroll: navbar avec fond visible */
+.site-header.sticky .main-nav a {
+  /* Couleur jaune plus vive pour meilleure lisibilité sur fond clair */
+  color: #ffd400; /* accent amplifié */
+}
+
+.site-header.sticky .main-nav a:hover {
+  /* léger contraste sur hover sans devenir trop dur */
+  background-color: rgba(0,0,0,0.03);
+  color: #ffffff; /* texte blanc sur hover pour contraste */
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+}
+
+.site-header.sticky .main-nav a.nav-active {
+  background-color: rgba(255,255,255,0.98);
+  color: #0047ab;
+  font-weight: 700;
+}
+
+.site-header.sticky .logo-text {
+  color: #ffd400; /* logo en jaune plus visible */
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+  min-height: 48px; /* garde une hauteur lisible et compacte */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 48px; /* légèrement réduit pour compacter l'en-tête */
+  height: auto;
+}
+
+.logo-text {
+  color: var(--color-accent-yellow);
+  font-family: 'Castoro Titling', serif;
+  font-size: 16px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 28px; /* réduit l'espace horizontal entre items */
+}
+
+.main-nav a {
+  color: #fff700;
+  font-family: 'Castoro Titling', serif;
+  font-size: 14px;
+  transition: transform 0.22s ease, background-color 0.22s ease, color 0.22s ease;
+  padding: 6px 10px;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.main-nav a.nav-hover {
+  background-color: #ffffff;
+  color: var(--color-accent-yellow);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+.main-nav a.nav-active {
+  background-color: #ffffff;
+  color: #0047ab;
+  font-weight: 700;
+}
+
+/* ========================================
+   Navigation Media Queries
+   ======================================== */
+
+@media (max-width: 992px) {
+  .main-nav {
+    display: none;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  .header-container {
+    justify-content: flex-start;
+  }
+}
+
+/* Mobile dropdown menu (arrondi, transparent à 30%) */
+@media (max-width: 992px) {
+  .main-nav.is-open {
+    display: block;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 16px;
+    background-color: rgba(11,6,24,0.3); /* 30% transparent */
+    backdrop-filter: blur(6px);
+    border-radius: 14px;
+    padding: 12px 18px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    min-width: 200px;
+    z-index: 120;
+  }
+
+  .main-nav.is-open ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .main-nav.is-open a {
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 10px;
+    width: 100%;
+    display: inline-block;
+  }
+
+  .menu-toggle img { width: 28px; height: auto; }
+}
+
+@media (max-width: 768px) {
+  .main-nav ul {
+    gap: 30px;
+  }
+}
+

@@ -1,0 +1,20 @@
+<header class="site-header">
+  <div class="container header-container">
+    <div class="logo-container">
+      <a href="#hero" class="logo">
+        <img src="images/198957da308ca8300bab9a2d87953371f5117f46.png" alt="Credo's Logo" class="logo-img">
+        <span class="logo-text">{{ site_name }}</span>
+      </a>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <img src="images/333_74.svg" alt="Menu Icon">
+      </button>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        {% for item in nav_items %}
+        <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

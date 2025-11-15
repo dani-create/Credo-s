@@ -1,0 +1,39 @@
+<section id="hero" class="hero-section">
+  <div class="hero-bg-right"></div>
+  <img src="images/320_120.svg" alt="Blur effect" class="decorative-blur hero-blur-1">
+  <img src="images/320_121.svg" alt="Blur effect" class="decorative-blur hero-blur-2">
+  <img src="images/320_118.svg" alt="Blur effect" class="decorative-blur hero-blur-3">
+
+  <div class="container hero-container">
+    <div class="hero-content">
+      <h2 class="hero-subtitle">{{ hero_subtitle }}</h2>
+      <h1 class="hero-title">{{ hero_title }}</h1>
+      <div class="hero-divider">
+        <div class="hero-divider-yellow"></div>
+        <div class="hero-divider-black"></div>
+      </div>
+      <p class="hero-tagline">{{ hero_tagline }}</p>
+    </div>
+    <div class="hero-image-wrapper">
+      <div class="hero-image-container">
+        <img src="{{ hero_secondary_image }}" alt="Burger ingredients" class="hero-image-secondary">
+        <img src="{{ hero_primary_image }}" alt="Delicious burger" class="hero-image-primary">
+      </div>
+      <a href="#" class="hero-cta-button">
+        <span class="hero-cta-text">{{ cta_button_text }}</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-extra-info delivery-info">
+    <div class="delivery-icon-wrapper">
+      <img src="{{ delivery_icon }}" alt="Delivery Scooter">
+    </div>
+    <span>{{ delivery_text }}</span>
+  </div>
+
+  <div class="hero-extra-info trust-badge">
+    <img src="images/333_83.svg" alt="Hamburger icon">
+    <span>{{ trust_badge_text }}</span>
+  </div>
+</section>
