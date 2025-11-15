@@ -95,6 +95,9 @@
   background: none;
   border: none;
   cursor: pointer;
+  padding: 8px;
+  position: relative;
+  z-index: 110;
 }
 
 .main-nav ul {
