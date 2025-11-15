@@ -2,7 +2,8 @@
 (function () {
   'use strict';
 
-  const menuToggle = document.querySelector('.menu-toggle.menu-toggle-right');
+  // Robust selection: try querySelector, fallback to document-level delegation
+  let menuToggle = document.querySelector('.menu-toggle.menu-toggle-right');
   const mainNav = document.querySelector('.main-nav');
   const navLinks = document.querySelectorAll('.main-nav a');
   const siteHeader = document.querySelector('.site-header');
@@ -14,9 +15,21 @@
     menuToggle.setAttribute('aria-expanded', String(mainNav.classList.contains('is-open')));
   }
 
+  // Attach click on the toggle if present
   if (menuToggle) {
     menuToggle.addEventListener('click', toggleMenu);
   }
+
+  // Fallback: delegation - handle clicks on any current or future toggle elements
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    const clickedToggle = target.closest && target.closest('.menu-toggle');
+    if (clickedToggle) {
+      // ensure menuToggle reference points to the clicked element
+      menuToggle = clickedToggle;
+      toggleMenu();
+    }
+  });
 
   // Ferme le menu si on clique en dehors
   document.addEventListener('click', (e) => {
