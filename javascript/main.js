@@ -162,4 +162,28 @@
     // initialisations éventuelles
   };
 
+  // Ensure dishes scroller starts at first card on load/resize
+  function ensureDishesScrollerAligned() {
+    const grid = document.querySelector('.dishes-grid');
+    if (!grid) return;
+    // If scrollLeft is already > 0 (browser preserved position), reset to 0
+    // Use a timeout to allow layout to settle (fonts, images)
+    setTimeout(() => {
+      try {
+        grid.scrollLeft = 0;
+      } catch (e) {
+        // fallback: smooth scroll
+        grid.scrollTo && grid.scrollTo(0, 0);
+      }
+    }, 60);
+  }
+
+  window.addEventListener('load', ensureDishesScrollerAligned);
+  window.addEventListener('orientationchange', ensureDishesScrollerAligned);
+  window.addEventListener('resize', () => {
+    // debounce small resizes
+    clearTimeout(window.__credo_dishes_resize);
+    window.__credo_dishes_resize = setTimeout(ensureDishesScrollerAligned, 120);
+  });
+
 })();

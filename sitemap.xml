@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://localhost:8888/</loc>
+    <loc>https://dani-create.github.io/Credo-s/</loc>
     <priority>1.00</priority>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>http://localhost:8888/index.html</loc>
+    <loc>https://dani-create.github.io/Credo-s/index.html</loc>
     <priority>0.80</priority>
     <changefreq>weekly</changefreq>
   </url>
