@@ -1,4 +1,9 @@
 User-agent: *
+Allow: /
+Sitemap: https://dani-create.github.io/Credo-s/sitemap.xml
+
+# Bots should not crawl admin or staging if present (example)
+Disallow: /admin/User-agent: *
 Disallow:
 Sitemap: https://dani-create.github.io/Credo-s/sitemap.xml
 # Production sitemap for Credo-s GitHub Pages

@@ -656,8 +656,28 @@ body.theme-light .delivery-icon-wrapper {
     padding-left: 24px;
     padding-right: 24px;
     scroll-padding-left: 24px;
+    scroll-padding-right: 24px;
     -webkit-overflow-scrolling: touch;
   }
+
+/* Ensure general dishes-grid also defines scroll-padding for larger viewports */
+.dishes-grid {
+  scroll-padding-left: 12px;
+  scroll-padding-right: 12px;
+}
+
+/* Ensure first and last cards are fully visible and no left offset hides the first */
+.dishes-grid .dish-card:first-child {
+  margin-left: 0 !important;
+}
+.dishes-grid .dish-card:last-child {
+  scroll-margin-right: 24px;
+}
+
+/* Modal gallery padding safe defaults */
+.order-modal-gallery { padding-left: 12px; padding-right: 12px; }
+.order-modal-thumb:first-child { margin-left: 0 !important; }
+.order-modal-thumb:last-child { scroll-margin-right: 24px; }
 }
 
 /* ========================================
@@ -798,6 +818,39 @@ body.theme-light .delivery-icon-wrapper {
   text-decoration: none;
 }
 
+/* Order modal gallery (general command popup) */
+.order-modal-gallery {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 12px 8px;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+.order-modal-thumb {
+  flex: 0 0 auto;
+  width: 140px;
+  scroll-snap-align: start;
+  text-align: center;
+}
+.order-modal-thumb-img {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+.order-modal-thumb-label {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--color-primary-text);
+}
+
+/* Ensure modal body does not hide first thumb due to padding */
+.order-modal-body .order-modal-gallery { padding-left: 8px; }
+
 .order-btn.email {
   background-color: #ffffff;
   color: #0b0618;
@@ -842,37 +895,44 @@ body.theme-light .delivery-icon-wrapper {
   .order-modal-image { width: 200px; height: 200px; }
 }
 
-/* Gallery scroller in general modal: centered and not full width */
-.order-modal-gallery {
-  display: flex;
-  justify-content: center;
-  width: 70%; /* moyenne largeur */
-  margin: 6px auto 0 auto;
-  padding: 12px 6px;
-  overflow-x: auto;
-  gap: 12px;
-}
-
-.order-modal-gallery img {
-  width: 96px;
-  height: 96px;
-  border-radius: 70%; /* arrondie à 70% */
-  object-fit: cover;
-  cursor: pointer;
-  flex: 0 0 auto;
+/* Gallery grid in general modal: compact transparent table centered */
+.order-modal-gallery-grid {
+  display: table;
+  border-collapse: collapse;
+  margin: 8px auto;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  max-width: fit-content;
 }
 
 .order-modal-thumb {
-  flex: 0 0 auto;
+  display: table-cell;
   text-align: center;
+  cursor: pointer;
+  padding: 8px;
+  background: transparent;
+  border: none;
 }
 
 .order-modal-thumb-img {
-  width: 96px;
-  height: 96px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: block;
+}
+
+.order-modal-thumb-img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.order-modal-thumb-label {
+  display: none;
 }
 
 .order-modal-thumb-label {

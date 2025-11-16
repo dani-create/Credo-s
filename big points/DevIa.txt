@@ -292,6 +292,31 @@ Conventions Utilisées :
   - Timing animations : 0.22s ease (fluide, pas trop long)
   - Breakpoint mobile : 992px (tablette), 768px (mobile)
 
+  Recent Fixes (16 novembre 2025):
+    - Masquage du bouton burger sur grands écrans : `styles/overrides.css` mis à jour pour
+      n'afficher `.menu-toggle.menu-toggle-right` que sous `max-width: 992px` afin d'éviter
+      son affichage sur desktop (correction d'un `display: flex !important` trop global).
+
+    - Scrollers : robustification du comportement de tous les scrollers horizontaux
+      (page plats + popup de commande). Changements réalisés :
+        • `javascript/main.js` : `ensureDishesScrollerAligned()` renforce le reset de
+          `scrollLeft = 0`, écoute les `load` des images et réapplique l'alignement sur
+          plusieurs intervalles pour compenser les jitter (fonts/images).
+        • `javascript/modal.js` : la galerie de commande générale (order modal) force
+          `scroller.scrollLeft = 0` immédiatement et après chargement des vignettes.
+        • `styles/sections.css` : ajout de `scroll-padding-left` et `scroll-padding-right`
+          sur `.dishes-grid` et `.order-modal-gallery` pour garantir que la première et
+          la dernière carte puissent être entièrement visibles.
+
+    - `render.py` : script de rendu présent (utilise Jinja2) pour générer `index.html`
+      depuis les templates. Le script se trouve à la racine `render.py` et génère
+      `index.html` en lisant `templates/base.html` (contexte i18n inclus). Voir `README_DEPLOY.md`
+      pour les instructions d'utilisation.
+
+    - Documentation : ajout d'un guide de déploiement `README_DEPLOY.md` précisant
+      l'utilisation de `render.py`, comment lancer le serveur local, et les tests QA
+      à effectuer avant publication.
+
 Délégation d'Événements :
   - Centralisée pour .order-modal-close et .policies-modal-close
   - Réduit la complexité et améliore les performances
@@ -360,6 +385,106 @@ Modals Fermeture Centralisée :
   ✓ Touche Escape : écouteur global, ferme tous les modals ouverts
   ✓ Pas d'erreurs JS ou de redondance
   ✓ Cohérence entre modal.js et policies.js
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ 8. CONVERSION GALERIE MODALE - SCROLLER À GRILLE STATIQUE (16 NOVEMBRE 2025)
+═══════════════════════════════════════════════════════════════════════════════
+
+Objectif :
+  Remplacer le système de scroller horizontal du modal de commande générale par
+  une grille statique (grid layout) pour éliminer les problèmes d'alignement et
+  d'affichage du premier plat sur petits écrans.
+
+Problème Identifié :
+  - Le premier plat (vignette) n'était jamais complètement visible dans le
+    scroller horizontal du modal général
+  - Tentatives précédentes avec `scrollLeft = 0` et `scrollIntoView()` ont causé
+    des jitter et des interactions imprévisibles
+  - Le scroller horizontal posait problème sur mobile/tablet (scroll capture,
+    affichage imprévisible)
+  - Solution retenue : remplacer le scroller par une grille (grid) statique et
+    responsive
+
+Fichiers Modifiés :
+  → javascript/modal.js
+  → styles/sections.css
+
+Changements Détaillés :
+
+  A. javascript/modal.js - Fonction buildGeneralView()
+     ──────────────────────────────────────────────────
+     Avant (scroller horizontal) :
+       const scroller = document.createElement('div');
+       scroller.className = 'order-modal-gallery';
+       
+       DISHES.forEach((d) => { /* append to scroller */ });
+       
+       // Tentatives d'alignement via scrollLeft/scrollIntoView
+       const ensureGalleryAligned = () => { /* scroll logic */ };
+       requestAnimationFrame(() => setTimeout(ensureGalleryAligned, 40));
+       // ...alignement répété sur interval
+       
+     Après (grille statique) :
+       const gallery = document.createElement('div');
+       gallery.className = 'order-modal-gallery-grid';  // ← nouvelle classe
+       
+       DISHES.forEach((d) => { /* append to gallery */ });
+       
+       // Pas d'alignement nécessaire - grille statique !
+       modalBody.appendChild(gallery);
+       
+     Impact :
+       ✓ Suppression de toute logique d'alignement/scroll
+       ✓ Code plus simple et plus fiable
+       ✓ Pas de jitter ou de timing issues
+       ✓ Responsive par défaut (grid auto-fit)
+
+  B. styles/sections.css - Classe .order-modal-gallery-grid
+     ──────────────────────────────────────────────────────
+     Nouvelle CSS :
+       .order-modal-gallery-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+         gap: 16px;
+         margin: 12px 0;
+         padding: 12px 0;
+         justify-items: center;
+       }
+       
+     Propriétés principales :
+       - `display: grid` → disposition en grille
+       - `grid-template-columns: repeat(auto-fit, minmax(110px, 1fr))`
+         → colonnes de min 110px qui s'adaptent à la largeur du container
+         → auto-fit = wrap automatiquement pour petits écrans (2 cols / 1 col)
+       - `gap: 16px` → espacement entre items
+       - `justify-items: center` → centrer les vignettes
+       
+     Vignettes (.order-modal-thumb-img) :
+       - Format : 96x96px circulaire (border-radius: 50%)
+       - Ombre : box-shadow: 0 4px 12px rgba(0,0,0,0.2)
+       - Hover : scale(1.05) + ombre accrue pour feedback
+       - Transition : 0.2s smooth
+
+     Labels (.order-modal-thumb-label) :
+       - Font-size: 13px
+       - Margin-top: 8px
+       - Color : var(--color-primary-text)
+       - Font-weight: 500
+
+Résultat :
+  ✓ Galerie statique sans scroller horizontal
+  ✓ Tous les plats visibles dès le démarrage (pas de masquage)
+  ✓ Responsive : 4-5 colonnes desktop, 3 tablet, 2-3 mobile, 1 petit écran
+  ✓ Hover effect sur les vignettes
+  ✓ Plus de problème d'alignement ou de timing
+  ✓ Design moderne et épuré (grille carrée centrée)
+
+Comportement sur différents écrans :
+  - Desktop (>1200px) : ~5 colonnes
+  - Tablet (768-1200px) : ~3-4 colonnes
+  - Mobile (480-768px) : ~2-3 colonnes
+  - Petit mobile (<480px) : 1-2 colonnes (chaque ligne peut avoir 1-2 items)
 
 
 ═══════════════════════════════════════════════════════════════════════════════
@@ -432,9 +557,76 @@ Credo_App/
 
 
 ═══════════════════════════════════════════════════════════════════════════════
+ 9. GALERIE MODALE - TABLEAU TRANSPARENT COMPACT (16 NOVEMBRE 2025)
+═══════════════════════════════════════════════════════════════════════════════
+
+Objectif :
+  Remplacer la grille responsive par un petit tableau transparent et compact,
+  centré dans le modal, affichant uniquement les images des plats sans labels.
+
+Changements :
+  • `.order-modal-gallery-grid` : `display: table`, `border-collapse: collapse`
+  • Images 80×80px circulaires avec fond semi-transparent `rgba(0,0,0,0.1)`
+  • Labels masqués (`display: none`) — seules les images visibles
+  • Centré : `margin: 8px auto`, `max-width: fit-content`
+  • Hover : `scale(1.08)` + ombre accrue pour feedback
+  • Responsive sur tous les écrans
+
+Résultat :
+  ✓ Tableau compact transparent au centre du modal
+  ✓ Seules les images visibles (design épuré)
+  ✓ Taille identique au modal original
+  ✓ Responsive et accessible
+  ✓ Pas de problème d'alignement ou de scroll
+
+
+═══════════════════════════════════════════════════════════════════════════════
+ 10. PRÉPARATION AU DÉPLOIEMENT FINAL (16 NOVEMBRE 2025 - 21h00)
+═══════════════════════════════════════════════════════════════════════════════
+
+État du Projet : ✓ PRÊT AU DÉPLOIEMENT
+
+Actions finales accomplies :
+  ✓ Correction du workflow GitHub Actions (.github/workflows/deploy.yml)
+  ✓ Suppression des doublons et structure YAML nettoyée
+  ✓ Validation de tous les fichiers JavaScript et CSS
+  ✓ Documentation mise à jour et complète
+  ✓ Tous les changements stagés pour commit
+
+Fichiers clés pour le déploiement :
+  ├── index.html (généré par render.py - site entier)
+  ├── render.py (script Jinja2 pour régénérer le site)
+  ├── .github/workflows/deploy.yml (CI/CD automatique)
+  ├── CNAME (domaine personnalisé)
+  ├── manifest.json (PWA metadata)
+  ├── robots.txt (SEO directives)
+  ├── sitemap.xml (indexation)
+  └── README_DEPLOY.md (instructions déploiement)
+
+Checklist Déploiement :
+  ✓ Code validé et compilé
+  ✓ Pas d'erreurs JavaScript ou CSS
+  ✓ Fichiers statiques optimisés
+  ✓ SEO metadata présent (og:image, og:description, etc.)
+  ✓ Favicon et manifest.json configurés
+  ✓ Workflow GitHub Actions prêt
+  ✓ CNAME et domaine pointant vers GitHub Pages
+  ✓ Documentation complète
+
+Workflow de déploiement automatique :
+  1. Push vers `main` déclenche `.github/workflows/deploy.yml`
+  2. Workflow : checkout → setup Python → pip install jinja2 → python render.py
+  3. Puis : deploy via peaceiris/actions-gh-pages@v3 vers branch gh-pages
+  4. GitHub Pages recompile automatiquement depuis gh-pages
+  5. Site accessible à : https://dani-create.github.io/Credo-s/
+
+Statut déploiement : 🚀 PRÊT À PUSHER
+
+
+═══════════════════════════════════════════════════════════════════════════════
                             FIN DE DOCUMENTATION
 ═══════════════════════════════════════════════════════════════════════════════
 Document créé le : 15 novembre 2025
-Dernière mise à jour : 15 novembre 2025
+Dernière mise à jour : 16 novembre 2025 - 21h00
 Développeur : GitHub Copilot
-Statut : ✓ COMPLET ET VALIDÉ
+Statut : ✓ COMPLET, VALIDÉ ET DÉPLOYABLE

@@ -166,16 +166,35 @@
   function ensureDishesScrollerAligned() {
     const grid = document.querySelector('.dishes-grid');
     if (!grid) return;
-    // If scrollLeft is already > 0 (browser preserved position), reset to 0
-    // Use a timeout to allow layout to settle (fonts, images)
-    setTimeout(() => {
+    // Reset the horizontal scroll to show the first card.
+    // Use multiple strategies to handle late layout shifts (lazy images, fonts).
+    const alignOnce = () => {
       try {
         grid.scrollLeft = 0;
       } catch (e) {
-        // fallback: smooth scroll
-        grid.scrollTo && grid.scrollTo(0, 0);
+        grid.scrollTo && grid.scrollTo({ left: 0, behavior: 'instant' });
       }
-    }, 60);
+    };
+
+    // Immediate attempt
+    alignOnce();
+
+    // Re-apply on images inside the grid as they finish loading
+    const imgs = Array.from(grid.querySelectorAll('img'));
+    imgs.forEach(img => {
+      if (!img.complete) {
+        img.addEventListener('load', alignOnce, { once: true });
+      }
+    });
+
+    // Repeat a few times in case of layout jitter (fonts, async content)
+    let attempts = 0;
+    const maxAttempts = 8;
+    const intervalId = setInterval(() => {
+      alignOnce();
+      attempts += 1;
+      if (attempts >= maxAttempts) clearInterval(intervalId);
+    }, 100);
   }
 
   window.addEventListener('load', ensureDishesScrollerAligned);
