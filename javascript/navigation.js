@@ -19,7 +19,7 @@
     }
   }
 
-  // Ferme le menu et restaure le scroll
+  // Ferme le menu et restaure le scroll COMPLÈTEMENT
   function closeMenu() {
     if (!mainNav) return;
     mainNav.classList.remove('is-open');
@@ -29,6 +29,9 @@
     // Retire la classe nav-open pour restaurer le scroll normal
     if (document.body) {
       document.body.classList.remove('nav-open');
+      // IMPORTANT: Force la restauration du scroll en libérant complètement le body
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
   }
 
@@ -116,7 +119,7 @@
         link.classList.remove('nav-hover');
       });
 
-      // Click handler pour smooth scroll - FERME le menu après navigation
+      // Click handler pour smooth scroll - FERME le menu COMPLÈTEMENT avant scroll
       link.addEventListener('click', (e) => {
         const href = link.getAttribute('href');
         if (href && href.startsWith('#')) {
@@ -125,13 +128,22 @@
           const targetSection = document.getElementById(targetId);
           
           if (targetSection) {
-            // Fermer le menu AVANT de scroller
+            // Fermer le menu COMPLÈTEMENT
             closeMenu();
             
-            // Attendre un peu pour que le menu se ferme, puis scroller sans bloquer
+            // Attendre un peu pour que le menu se ferme complètement, puis scroller
+            // et s'assurer que le scroll est libre
             setTimeout(() => {
+              // Forcer la libération du scroll avant smooth scroll
+              if (document.body.classList.contains('nav-open')) {
+                document.body.classList.remove('nav-open');
+              }
+              document.body.style.overflow = '';
+              document.documentElement.style.overflow = '';
+              
+              // Smooth scroll vers la section
               targetSection.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
+            }, 150);
           }
         }
       });
