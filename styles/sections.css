@@ -896,8 +896,179 @@ body.theme-dark .delivery-logo { background: #fff !important; border-radius: 10p
 }
 
 @media (max-width: 768px) {
-  .order-modal-card { padding: 16px; }
-  .order-modal-image { width: 200px; height: 200px; }
+  /* Modales responsives pour tablettes */
+  #order-modal, .help-modal, .cart-modal {
+    padding: 16px;
+  }
+  
+  .order-modal-card {
+    width: 100%;
+    max-width: 90%;
+    max-height: calc(100vh - 40px);
+    padding: 16px;
+    border-radius: 16px;
+  }
+  
+  .order-modal-header {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  
+  .order-modal-title {
+    font-size: 18px;
+    margin-top: 8px;
+  }
+  
+  .order-modal-image {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .order-modal-body {
+    gap: 10px;
+  }
+  
+  .order-modal-description {
+    font-size: 14px;
+    max-width: 100%;
+  }
+  
+  .order-modal-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .order-btn {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 14px;
+    justify-content: center;
+  }
+  
+  .order-modal-prices {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .order-variant-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .order-modal-logo img {
+    width: 48px;
+  }
+  
+  .order-modal-back {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Modales responsives pour mobiles */
+  #order-modal, .help-modal, .cart-modal {
+    padding: 12px;
+  }
+  
+  .order-modal-card {
+    width: 100%;
+    max-width: calc(100vw - 24px);
+    max-height: calc(100vh - 30px);
+    padding: 14px;
+    border-radius: 14px;
+    overflow-y: auto;
+  }
+  
+  .order-modal-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .order-modal-title {
+    font-size: 16px;
+    margin-top: 4px;
+  }
+  
+  .order-modal-logo img {
+    width: 40px;
+  }
+  
+  .order-modal-image {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .order-modal-body {
+    gap: 8px;
+  }
+  
+  .order-modal-description {
+    font-size: 13px;
+    line-height: 1.4;
+    max-width: 100%;
+  }
+  
+  .order-modal-actions {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  
+  .order-btn {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 13px;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  
+  .order-modal-prices {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  
+  .order-variant-btn {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+  
+  .order-modal-footer {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  
+  .order-modal-back {
+    width: 100%;
+    margin-bottom: 6px;
+    padding: 8px;
+    font-size: 12px;
+  }
+  
+  .order-modal-card :focus, .cart-modal .order-modal-card :focus {
+    outline: 2px solid rgba(255, 220, 0, 0.4);
+    outline-offset: 2px;
+  }
+  
+  /* Cart items mobile */
+  .cart-list {
+    max-height: 300px;
+  }
+  
+  .cart-item {
+    padding: 6px;
+    gap: 8px;
+  }
+  
+  .cart-item img {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 /* Contact icons: ensure visible on light mode */
@@ -907,14 +1078,23 @@ body.theme-dark .delivery-logo { background: #fff !important; border-radius: 10p
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #000; /* black background for light mode */
+  background: var(--contact-icon-bg);
   color: #fff;
   padding: 6px;
   border-radius: 8px;
 }
 
+/* In light mode, ensure icons are white on black bg */
+body.theme-light .contact-icon {
+  background: #000000;
+  color: #ffffff;
+}
+
 /* In dark theme, keep icons natural (or invert if needed) */
-body.theme-dark .contact-icon { background: transparent; filter: invert(1) hue-rotate(180deg) contrast(1.05); }
+body.theme-dark .contact-icon { 
+  background: transparent; 
+  filter: invert(1) hue-rotate(180deg) contrast(1.05); 
+}
 
 /* Hero section: mobile stacking - center content */
 @media (max-width: 414px) {

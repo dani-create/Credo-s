@@ -173,6 +173,11 @@
 
 /* Mobile dropdown menu visible au clic */
 @media (max-width: 992px) {
+  body.nav-open {
+    /* Allow scroll when menu is open on mobile - don't block overflow */
+    overflow: auto;
+  }
+  
   .main-nav {
     position: fixed;
     top: 60px;

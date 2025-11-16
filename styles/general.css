@@ -28,7 +28,7 @@ body.theme-dark {
 
 /* Contact icon bg variable (changed per theme) */
 :root { --contact-icon-bg: transparent; }
-body.theme-light { --contact-icon-bg: #ffffff; }
+body.theme-light { --contact-icon-bg: #000000; }
 body.theme-dark { --contact-icon-bg: transparent; }
 :root {
   --color-primary-bg: #0b0618;

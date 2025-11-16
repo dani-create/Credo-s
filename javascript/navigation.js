@@ -13,7 +13,7 @@
     if (!mainNav) return;
     mainNav.classList.toggle('is-open');
     menuToggle.setAttribute('aria-expanded', String(mainNav.classList.contains('is-open')));
-    // prevent background scroll when nav is open on mobile
+    // Add nav-open class for styling - allow scrolling via CSS now
     if (document.body) {
       document.body.classList.toggle('nav-open', mainNav.classList.contains('is-open'));
     }
