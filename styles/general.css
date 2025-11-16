@@ -171,8 +171,8 @@ body {
 
 /* Extra small screens (iPhone 12 / 7 emulation) */
 @media (max-width: 428px) {
-  body { padding-top: 64px; }
-  .container { padding-left: 14px; padding-right: 14px; }
+  body { padding-top: 64px; overflow-x: hidden; }
+  .container { padding-left: 14px; padding-right: 14px; max-width: 100%; }
   .heading { font-size: 22px; }
   .subheading { font-size: 11px; max-width: 420px; }
   .tagline { font-size: 13px; }
@@ -180,8 +180,8 @@ body {
 }
 
 @media (max-width: 375px) {
-  body { padding-top: 56px; }
-  .container { padding-left: 12px; padding-right: 12px; }
+  body { padding-top: 56px; overflow-x: hidden; }
+  .container { padding-left: 12px; padding-right: 12px; max-width: 100%; }
   .heading { font-size: 20px; }
   .subheading { font-size: 10px; max-width: 340px; }
   .tagline { font-size: 12px; }

@@ -659,6 +659,16 @@ body.theme-light .delivery-icon-wrapper {
     scroll-padding-right: 24px;
     -webkit-overflow-scrolling: touch;
   }
+  
+  .dishes-smoke-bg {
+    width: 600px;
+    height: 500px;
+  }
+  
+  .hero-image-secondary {
+    display: none;
+  }
+}
 
 /* Ensure general dishes-grid also defines scroll-padding for larger viewports */
 .dishes-grid {
@@ -1083,6 +1093,188 @@ body.theme-light .delivery-icon-wrapper {
   .order-modal-thumb img,
   .dish-card img { width: 40px; height: 40px; }
   .order-modal .modal-content { padding: 8px; }
+}
+
+/* Extra small screens (iPhone 12 ~428px) - comprehensive mobile fixes */
+@media (max-width: 428px) {
+  body { overflow-x: hidden; }
+  
+  .hero-section {
+    padding-top: 64px;
+    padding-bottom: 30px;
+    min-height: auto;
+  }
+  
+  .hero-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .hero-title { font-size: 20px; }
+  .hero-subtitle { font-size: 14px; }
+  .hero-tagline { font-size: 12px; max-width: 100%; }
+  
+  .hero-image-container {
+    width: 90vw;
+    max-width: 280px;
+    height: 200px;
+  }
+  
+  .hero-image-primary {
+    width: 180px;
+    height: 180px;
+    top: -10px;
+    left: 15px;
+  }
+  
+  .hero-image-secondary { display: none; }
+  
+  .hero-cta-button {
+    width: 220px;
+    height: 40px;
+    margin-top: 8px;
+  }
+  
+  .hero-cta-text { font-size: 16px; }
+  .delivery-info, .trust-badge { display: none; }
+  
+  /* Dishes section */
+  .dishes-section { padding: 60px 0; }
+  
+  .dishes-smoke-bg {
+    width: 400px;
+    height: 350px;
+    opacity: 0.3;
+  }
+  
+  .dishes-grid {
+    gap: 16px;
+    padding: 16px;
+    margin-top: 40px;
+  }
+  
+  .dish-card {
+    width: 160px;
+    min-width: 160px;
+    max-width: 160px;
+    height: 280px;
+    padding: 14px;
+  }
+  
+  .dish-image { width: 130px; height: 100px; }
+  .dish-title { font-size: 16px; margin-bottom: 4px; }
+  .dish-description { font-size: 12px; line-height: 1.3; -webkit-line-clamp: 2; }
+  .dish-button { padding: 8px 12px; font-size: 12px; min-width: 120px; }
+  
+  .card-chicken {
+    width: 160px;
+    min-width: 160px;
+    max-width: 160px;
+    height: 280px;
+    padding: 14px;
+  }
+  
+  .card-chicken .dish-title { font-size: 16px; }
+  .card-chicken .dish-description { font-size: 12px; }
+  .card-chicken .dish-button { padding: 8px 12px; font-size: 12px; min-width: 110px; }
+  
+  .card-sides {
+    width: 160px;
+    min-width: 160px;
+    max-width: 160px;
+    height: 280px;
+    padding: 14px;
+  }
+  
+  .card-sides .dish-title-large { font-size: 16px; }
+  .card-sides .dish-description { font-size: 12px; }
+  
+  .card-sandwich {
+    width: 160px;
+    min-width: 160px;
+    max-width: 160px;
+    height: 280px;
+    padding: 14px;
+  }
+  
+  .card-sandwich .dish-title { font-size: 16px; }
+  .card-sandwich .dish-description { font-size: 12px; }
+  .card-sandwich .dish-image { width: 130px; height: 100px; }
+}
+
+/* Very small screens (iPhone 7/SE ~375px) - extreme mobile fixes */
+@media (max-width: 375px) {
+  body { overflow-x: hidden; }
+  
+  .hero-section {
+    padding-top: 56px;
+    padding-bottom: 24px;
+  }
+  
+  .hero-title { font-size: 18px; }
+  .hero-subtitle { font-size: 12px; }
+  .hero-tagline { font-size: 11px; }
+  
+  .hero-image-container {
+    width: 85vw;
+    max-width: 240px;
+    height: 180px;
+  }
+  
+  .hero-image-primary {
+    width: 160px;
+    height: 160px;
+    top: -8px;
+    left: 10px;
+  }
+  
+  .hero-cta-button { width: 200px; height: 38px; }
+  .hero-cta-text { font-size: 15px; }
+  
+  /* Dishes section */
+  .dishes-section { padding: 40px 0; }
+  
+  .dishes-smoke-bg {
+    width: 300px;
+    height: 250px;
+    opacity: 0.2;
+  }
+  
+  .dishes-grid { gap: 12px; padding: 12px; margin-top: 30px; }
+  
+  .dish-card {
+    width: 140px;
+    min-width: 140px;
+    max-width: 140px;
+    height: 240px;
+    padding: 12px;
+  }
+  
+  .dish-image { width: 110px; height: 90px; }
+  .dish-title { font-size: 14px; }
+  .dish-description { font-size: 11px; -webkit-line-clamp: 1; }
+  .dish-button { padding: 6px 10px; font-size: 11px; min-width: 100px; }
+  
+  .card-chicken {
+    width: 140px;
+    min-width: 140px;
+    max-width: 140px;
+    height: 240px;
+  }
+  
+  .card-sides {
+    width: 140px;
+    min-width: 140px;
+    max-width: 140px;
+    height: 240px;
+  }
+  
+  .card-sandwich {
+    width: 140px;
+    min-width: 140px;
+    max-width: 140px;
+    height: 240px;
+  }
 }
   font-size: 18px;
   cursor: pointer;

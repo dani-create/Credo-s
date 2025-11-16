@@ -244,3 +244,55 @@
   }
 }
 
+/* Extra small screens (iPhone 12 ~428px) */
+@media (max-width: 428px) {
+  .site-header {
+    padding: 4px 0;
+  }
+  
+  .header-container {
+    min-height: 44px;
+    padding: 0 12px;
+  }
+  
+  .logo-img {
+    width: 40px;
+  }
+  
+  .logo-text {
+    font-size: 14px;
+  }
+  
+  .main-nav {
+    top: 44px;
+    min-width: 180px;
+    max-width: 85vw;
+  }
+}
+
+/* Very small screens (iPhone 7/SE ~375px) */
+@media (max-width: 375px) {
+  .site-header {
+    padding: 3px 0;
+  }
+  
+  .header-container {
+    min-height: 40px;
+    padding: 0 10px;
+  }
+  
+  .logo-img {
+    width: 36px;
+  }
+  
+  .logo-text {
+    font-size: 13px;
+  }
+  
+  .main-nav {
+    top: 40px;
+    min-width: 160px;
+    max-width: 80vw;
+  }
+}
+

@@ -53,6 +53,35 @@ body.nav-open {
   }
 }
 
+/* Extra small screens - reduce burger button and navbar */
+@media (max-width: 428px) {
+  .menu-toggle.menu-toggle-right {
+    width: 40px !important;
+    height: 40px !important;
+    right: 12px !important;
+    top: 10px !important;
+  }
+  
+  .menu-toggle.menu-toggle-right img {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .menu-toggle.menu-toggle-right {
+    width: 36px !important;
+    height: 36px !important;
+    right: 10px !important;
+    top: 8px !important;
+  }
+  
+  .menu-toggle.menu-toggle-right img {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
 /* Slight smoother focus outlines for accessibility */
 .menu-toggle:focus { outline: 3px solid rgba(255, 212, 0, 0.18); outline-offset: 2px; }
 .main-nav a:focus { outline: 3px solid rgba(255,255,255,0.08); outline-offset: 2px; }
