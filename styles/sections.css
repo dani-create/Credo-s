@@ -653,9 +653,10 @@ body.theme-light .delivery-icon-wrapper {
   .dishes-grid {
     scroll-snap-type: x mandatory;
     /* Ensure first card is fully visible on small screens */
-    padding-left: 16px;
-    padding-right: 16px;
-    scroll-padding-left: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
+    scroll-padding-left: 24px;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
