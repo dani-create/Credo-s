@@ -1037,6 +1037,53 @@ body.theme-light .delivery-icon-wrapper {
   background: transparent;
   border: none;
   color: #ffffff;
+  .floating-btn {
+    width: 48px;
+    height: 48px;
+    left: auto;
+    right: calc(12px + env(safe-area-inset-right, 0px));
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* stack floating buttons vertically on the right side */
+  .floating-btn.theme { right: calc(12px + env(safe-area-inset-right, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+  .floating-btn.gallery { right: calc(12px + env(safe-area-inset-right, 0px)); bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
+  .floating-btn.help { right: calc(12px + env(safe-area-inset-right, 0px)); bottom: calc(134px + env(safe-area-inset-bottom, 0px)); }
+  .floating-btn.language { right: calc(12px + env(safe-area-inset-right, 0px)); bottom: calc(194px + env(safe-area-inset-bottom, 0px)); }
+
+  .floating-btn .label { display: none; }
+
+  .mini-cart {
+    right: calc(12px + env(safe-area-inset-right, 0px));
+    left: auto;
+    bottom: calc(194px + env(safe-area-inset-bottom, 0px));
+    width: 52px;
+    height: 52px;
+  }
+
+  /* Make modal thumbnails smaller and ensure images are responsive */
+  .order-modal-gallery-grid img,
+  .order-modal-thumb img,
+  .dish-card img {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  /* Reduce paddings in modal/content areas to fit narrow screens */
+  .order-modal { padding: 12px; }
+  .order-modal .modal-content { padding: 10px; }
+}
+
+@media (max-width: 375px) {
+  .floating-btn { width: 44px; height: 44px; }
+  .mini-cart { width: 48px; height: 48px; bottom: calc(170px + env(safe-area-inset-bottom, 0px)); }
+  .order-modal-gallery-grid img,
+  .order-modal-thumb img,
+  .dish-card img { width: 40px; height: 40px; }
+  .order-modal .modal-content { padding: 8px; }
+}
   font-size: 18px;
   cursor: pointer;
 }
