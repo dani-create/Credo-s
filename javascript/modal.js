@@ -33,7 +33,7 @@
       // Nouveaux plats populaires (images locales)
       { name: 'Burrito', img: 'images/burrito.jpg', desc: 'Burrito généreux garni de riz, haricots, viande épicée, légumes et sauce crémeuse — nourrissant et plein de saveurs.', prices: { Mini: 10000, Complet: 20000 } },
       { name: 'Shawarma', img: 'images/shawarma.jpg', desc: 'Shawarma tendre, finement tranché et servi avec pain pita, légumes frais et sauce à l\'ail — la street-food revisitée.', prices: { Mini: 10000, Complet: 20000 } },
-      { name: 'Tenders', img: 'images/tenders.jpg', desc: 'Tenders dorés et croustillants, bien assaisonnés — parfaits à partager ou à savourer seul.' }
+      // 'Tenders' removed from public menu
     ];
 
   function openModal() {

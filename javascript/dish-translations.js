@@ -8,7 +8,7 @@ const DISH_TRANSLATIONS = {
     'Poulet': 'Poulet croustillant, mariné aux épices locales et frit à la perfection — croustillant dehors, tendre dedans.',
     'Burrito': 'Burrito généreux garni de riz, haricots, viande épicée, légumes et sauce crémeuse — nourrissant et plein de saveurs.',
     'Shawarma': 'Shawarma tendre, finement tranché et servi avec pain pita, légumes frais et sauce à l\'ail — la street-food revisitée.',
-    'Tenders': 'Tenders dorés et croustillants, bien assaisonnés — parfaits à partager ou à savourer seul.'
+    // 'Tenders' removed
   },
   en: {
     'Sandwich': 'Generous sandwich, toasted bread, savory meat and homemade condiments — a comforting classic.',
@@ -17,7 +17,7 @@ const DISH_TRANSLATIONS = {
     'Chicken': 'Crispy chicken, marinated with local spices and fried to perfection — crispy outside, tender inside.',
     'Burrito': 'Generous burrito filled with rice, beans, spicy meat, vegetables and creamy sauce — nourishing and full of flavors.',
     'Shawarma': 'Tender shawarma, finely sliced and served with pita bread, fresh vegetables and garlic sauce — street-food revisited.',
-    'Tenders': 'Golden and crispy tenders, well-seasoned — perfect to share or enjoy alone.'
+    // 'Tenders' removed
   }
 };
 
