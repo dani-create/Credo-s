@@ -8,14 +8,27 @@
   const navLinks = document.querySelectorAll('.main-nav a');
   const siteHeader = document.querySelector('.site-header');
 
-  // Menu mobile toggle
+  // Menu mobile toggle - PERMET le scroll mais ajoute la classe
   function toggleMenu() {
     if (!mainNav) return;
     mainNav.classList.toggle('is-open');
     menuToggle.setAttribute('aria-expanded', String(mainNav.classList.contains('is-open')));
-    // Add nav-open class for styling - allow scrolling via CSS now
+    // Ajoute classe nav-open pour styling CSS - le scroll est géré par CSS media query
     if (document.body) {
       document.body.classList.toggle('nav-open', mainNav.classList.contains('is-open'));
+    }
+  }
+
+  // Ferme le menu et restaure le scroll
+  function closeMenu() {
+    if (!mainNav) return;
+    mainNav.classList.remove('is-open');
+    if (menuToggle) {
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+    // Retire la classe nav-open pour restaurer le scroll normal
+    if (document.body) {
+      document.body.classList.remove('nav-open');
     }
   }
 
@@ -41,8 +54,7 @@
     if (!mainNav.classList.contains('is-open')) return;
     const target = e.target;
     if (!mainNav.contains(target) && !menuToggle.contains(target)) {
-      mainNav.classList.remove('is-open');
-      menuToggle.setAttribute('aria-expanded', 'false');
+      closeMenu();
     }
   });
 
@@ -104,7 +116,7 @@
         link.classList.remove('nav-hover');
       });
 
-      // Click handler pour smooth scroll
+      // Click handler pour smooth scroll - FERME le menu après navigation
       link.addEventListener('click', (e) => {
         const href = link.getAttribute('href');
         if (href && href.startsWith('#')) {
@@ -113,12 +125,13 @@
           const targetSection = document.getElementById(targetId);
           
           if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-            // Fermer le menu mobile si ouvert
-            if (mainNav && mainNav.classList.contains('is-open')) {
-              mainNav.classList.remove('is-open');
-              menuToggle.setAttribute('aria-expanded', 'false');
-            }
+            // Fermer le menu AVANT de scroller
+            closeMenu();
+            
+            // Attendre un peu pour que le menu se ferme, puis scroller sans bloquer
+            setTimeout(() => {
+              targetSection.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
           }
         }
       });

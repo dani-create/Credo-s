@@ -121,7 +121,9 @@
   width: 28px;
   height: 28px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}.main-nav ul {
+}
+
+.main-nav ul {
   display: flex;
   gap: 28px; /* réduit l'espace horizontal entre items */
 }
@@ -173,10 +175,8 @@
 
 /* Mobile dropdown menu visible au clic */
 @media (max-width: 992px) {
-  body.nav-open {
-    /* Allow scroll when menu is open on mobile - don't block overflow */
-    overflow: auto;
-  }
+  /* IMPORTANT: N'ajouter AUCUNE restriction d'overflow au body
+     Laisser le scroll naturel du browser fonctionner toujours */
   
   .main-nav {
     position: fixed;
@@ -191,6 +191,7 @@
     z-index: 115;
     max-height: calc(100vh - 60px);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     display: none;
     animation: slideDown 0.22s ease-out;
   }
