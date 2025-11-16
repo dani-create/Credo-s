@@ -46,3 +46,16 @@ body.nav-open {
 /* Slight smoother focus outlines for accessibility */
 .menu-toggle:focus { outline: 3px solid rgba(255, 212, 0, 0.18); outline-offset: 2px; }
 .main-nav a:focus { outline: 3px solid rgba(255,255,255,0.08); outline-offset: 2px; }
+
+/* Remove underlines on buttons and links that are styled as buttons */
+button, .dish-button, .hero-cta-button, .order-btn, .a-button, .menu-toggle { text-decoration: none !important; }
+.main-nav a, .main-nav a:visited { text-decoration: none !important; }
+
+/* Remove bullets and default padding/margin from nav lists */
+.main-nav ul { list-style: none !important; margin: 0 !important; padding: 0 !important; }
+
+/* Ensure links inside list items don't show marker */
+.main-nav li { list-style: none !important; }
+
+/* Make buttons' text not underlined and keep pointer cursor */
+button, a.button, .order-btn { text-decoration: none; cursor: pointer; }
