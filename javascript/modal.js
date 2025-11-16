@@ -5,6 +5,10 @@
 
   const modal = document.getElementById('order-modal');
   if (!modal) return;
+  // Correction : forcer le modal à être caché au chargement
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  modal.style.display = '';
 
   const modalCard = modal.querySelector('.order-modal-card');
   const modalTitle = modal.querySelector('.order-modal-title');
@@ -227,8 +231,16 @@
     openModal();
   }
 
+  // Réparer le bouton flottant galerie
+  const galleryBtn = document.querySelector('.floating-btn.gallery');
+  if (galleryBtn) {
+    galleryBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      openGeneralModal();
+    });
+  }
+
   // Floating UI handlers: gallery & help & mini-cart
-  const galleryBtn = document.getElementById('gallery-btn');
   const helpBtn = document.getElementById('help-btn');
   const miniCart = document.getElementById('mini-cart');
 
@@ -377,14 +389,6 @@
     const bodyText = `Bonjour,\n\nJe souhaite commander :\n${lines.join('\n')}\n\nMerci.`;
     const body = encodeURIComponent(bodyText);
     window.location.href = `mailto:${EMAIL_ADDRESS}?subject=${subject}&body=${body}`;
-  }
-
-  // Attach gallery button to open general modal
-  if (galleryBtn) {
-    galleryBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openGeneralModal();
-    });
   }
 
   // Attach help button to open help modal (corrigé: n'affiche le pop qu'au clic)
