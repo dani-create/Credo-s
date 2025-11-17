@@ -1,0 +1,34 @@
+<footer id="footer" class="site-footer-main">
+  <img src="images/344_147.svg" alt="Blur effect" class="decorative-blur footer-blur-1">
+  <img src="images/344_149.svg" alt="Blur effect" class="decorative-blur footer-blur-2">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-info">
+        <a href="#" class="footer-logo">
+          <img src="images/198957da308ca8300bab9a2d87953371f5117f46.png" alt="Credo's Logo">
+        </a>
+        <nav class="footer-nav">
+          <ul>
+            {% for item in footer_nav_items %}
+            <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+            {% endfor %}
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- subscribe form removed per request -->
+      <div class="footer-contact-short">
+        <h3 class="contact-short-title">Contactez-nous</h3>
+        <p class="contact-short-text">Email: <a href="mailto:Credosfood@gmail.com">Credosfood@gmail.com</a></p>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <div class="footer-legal-links">
+        <a href="#" id="privacy-link" data-modal="privacy">Politique de confidentialité</a>
+        <a href="#" id="terms-link" data-modal="terms">Conditions d'utilisation</a>
+      </div>
+      <p class="footer-copyright">{{ copyright_text }}</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,27 @@
+<section id="dishes" class="dishes-section">
+  <img src="images/325_141.svg" alt="Blur effect" class="decorative-blur dishes-blur-1">
+  <img src="images/325_138.svg" alt="Blur effect" class="decorative-blur dishes-blur-2">
+  <img src="images/8e281d0dd426b2af9a8b080164c6354f7dfbc167.png" alt="Smoke effect" class="dishes-smoke-bg">
+
+  <div class="container">
+    <div class="section-title">
+      <span class="tagline">{{ dishes_tagline }}</span>
+      <h2 class="heading">{{ dishes_heading }}</h2>
+      <p class="subheading">{{ dishes_subheading }}</p>
+    </div>
+    <div class="dishes-grid">
+      {% for dish in dishes %}
+      <article class="dish-card {{ dish.class }}">
+        {% if dish.type == 'chicken' %}
+        <div class="card-content">
+          <span class="dish-tagline">{{ dish.tagline }}</span>
+          <h3 class="dish-title">{{ dish.title }}</h3>
+          <p class="dish-description">{{ dish.description }}</p>
+        </div>
+        <a href="#" class="dish-button">{{ dish.button_text }}</a>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

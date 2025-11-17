@@ -1,0 +1,303 @@
+/* ========================================
+   Navigation / Header Styles
+   ======================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 6px 0;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.22s ease;
+  box-shadow: none;
+}
+
+.site-header.sticky {
+  /* Fond noir semi-transparent lorsque la navbar est sticky */
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.28);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* État hero: navbar bleu (couleur de base) */
+.site-header.in-hero {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* État scroll: navbar avec fond visible */
+.site-header.sticky .main-nav a {
+  /* Couleur jaune plus vive pour meilleure lisibilité sur fond clair */
+  color: #ffd400; /* accent amplifié */
+}
+
+.site-header.sticky .main-nav a:hover {
+  /* léger contraste sur hover sans devenir trop dur */
+  background-color: rgba(0,0,0,0.03);
+  color: #ffffff; /* texte blanc sur hover pour contraste */
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+}
+
+.site-header.sticky .main-nav a.nav-active {
+  background-color: rgba(255,255,255,0.98);
+  color: #0047ab;
+  font-weight: 700;
+}
+
+.site-header.sticky .logo-text {
+  color: #ffd400; /* logo en jaune plus visible */
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+  min-height: 48px; /* garde une hauteur lisible et compacte */
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 48px; /* légèrement réduit pour compacter l'en-tête */
+  height: auto;
+}
+
+.logo-text {
+  color: var(--color-accent-yellow);
+  font-family: 'Castoro Titling', serif;
+  font-size: 16px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  position: relative;
+  z-index: 110;
+  transition: transform 0.22s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+.menu-toggle.menu-toggle-right {
+  display: none;
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 120;
+  padding: 10px;
+}
+
+.menu-toggle.menu-toggle-right img {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 28px; /* réduit l'espace horizontal entre items */
+}
+
+.main-nav a {
+  color: #fff700;
+  font-family: 'Castoro Titling', serif;
+  font-size: 14px;
+  transition: transform 0.22s ease, background-color 0.22s ease, color 0.22s ease;
+  padding: 6px 10px;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.main-nav a.nav-hover {
+  background-color: #ffffff;
+  color: var(--color-accent-yellow);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+.main-nav a.nav-active {
+  background-color: #ffffff;
+  color: #0047ab;
+  font-weight: 700;
+}
+
+/* ========================================
+   Navigation Media Queries
+   ======================================== */
+
+@media (max-width: 992px) {
+  .main-nav {
+    display: none;
+  }
+  .menu-toggle {
+    display: none;
+  }
+  .menu-toggle.menu-toggle-right {
+    display: block;
+  }
+  .header-container {
+    justify-content: flex-start;
+    position: relative;
+  }
+}
+
+/* Mobile dropdown menu visible au clic */
+@media (max-width: 992px) {
+  /* IMPORTANT: N'AJOUTER AUCUNE restriction d'overflow au body
+     Laisser le scroll naturel du browser fonctionner toujours */
+  
+  .main-nav {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    background-color: rgba(11, 6, 24, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 0 12px;
+    padding: 16px 20px;
+    min-width: 240px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    z-index: 115;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: none;
+    animation: slideDown 0.22s ease-out;
+  }
+
+  .main-nav.is-open {
+    display: block;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .main-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: stretch;
+  }
+
+  .main-nav a {
+    color: #ffd400;
+    padding: 12px 16px;
+    border-radius: 8px;
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    transition: all 0.22s ease;
+    background-color: transparent;
+  }
+
+  .main-nav a:hover {
+    background-color: rgba(255, 212, 0, 0.15);
+    color: #ffffff;
+    transform: translateX(4px);
+    padding-left: 20px;
+  }
+
+  .main-nav a.nav-active {
+    background-color: rgba(255, 212, 0, 0.25);
+    color: #ffd400;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    top: 56px;
+    min-width: 200px;
+  }
+}
+
+/* Extra small screens (iPhone 12 ~428px) */
+@media (max-width: 428px) {
+  .site-header {
+    padding: 4px 0;
+  }
+  
+  .header-container {
+    min-height: 44px;
+    padding: 0 12px;
+  }
+  
+  .logo-img {
+    width: 40px;
+  }
+  
+  .logo-text {
+    font-size: 14px;
+  }
+  
+  .main-nav {
+    top: 44px;
+    min-width: 180px;
+    max-width: 85vw;
+  }
+}
+
+/* Very small screens (iPhone 7/SE ~375px) */
+@media (max-width: 375px) {
+  .site-header {
+    padding: 3px 0;
+  }
+  
+  .header-container {
+    min-height: 40px;
+    padding: 0 10px;
+  }
+  
+  .logo-img {
+    width: 36px;
+  }
+  
+  .logo-text {
+    font-size: 13px;
+  }
+  
+  .main-nav {
+    top: 40px;
+    min-width: 160px;
+    max-width: 80vw;
+  }
+}

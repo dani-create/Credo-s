@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!-- produit par glancedaniel55@gmail.com | 0851524080 -->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Lexend+Zetta:wght@500;700&family=Moon+Dance&family=Mooli&family=Roboto+Condensed:wght@400;700&family=Roboto+Flex:wght@400;700&family=Roboto+Mono:wght@400;700&family=Roboto+Serif:wght@400&family=Roboto:wght@400;600;700&family=Sansita+Swashed:wght@700&family=Ubuntu+Condensed&family=Ubuntu+Mono&family=Ubuntu+Sans:wght@600&family=Ubuntu:wght@400&family=Unna:wght@700&family=Risque&display=swap" rel="stylesheet">
+  <!-- Modular Styles (now served from src/) -->
+  <link rel="stylesheet" href="src/styles/general.css">
+  <link rel="stylesheet" href="src/styles/nav.css">
+  <link rel="stylesheet" href="src/styles/sections.css">
+  <link rel="stylesheet" href="src/styles/about.css">
+  <link rel="stylesheet" href="src/styles/footer.css">
+  <link rel="stylesheet" href="src/styles/policies.css">
+  <link rel="stylesheet" href="src/styles/overrides.css">
+  <!-- Favicons and mobile meta -->
+  <!-- Use relative paths (no leading slash) so favicon works on GitHub Pages subpath -->
+  <link rel="icon" type="image/png" href="images/198957da308ca8300bab9a2d87953371f5117f46.png" sizes="48x48">
+  <link rel="shortcut icon" href="images/198957da308ca8300bab9a2d87953371f5117f46.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/198957da308ca8300bab9a2d87953371f5117f46.png">
+  <meta name="theme-color" content="#ffd400">
+  <meta name="msapplication-TileColor" content="#ffd400">
+  <style id="sections-styles"></style>
+</head>
+<body>
+  <!-- Navigation Include -->
+  {% include 'nav.html' %}
+
+  <!-- Sections Include -->
+  {% include 'sections.html' %}
+
+  <!-- About Include -->
+  {% include 'about.html' %}
+
+  <!-- Footer Include -->
+  {% include 'footer.html' %}
+
+  <!-- Modular JavaScript Files -->
+  <script src="src/javascript/main.js" defer></script>
+  <script src="src/javascript/language.js" defer></script>
+  <script src="src/javascript/dish-translations.js" defer></script>
+  <script src="src/javascript/navigation.js" defer></script>
+  <script src="src/javascript/hero.js" defer></script>
+  <script src="src/javascript/dishes.js" defer></script>
+  <script src="src/javascript/testimonials.js" defer></script>
+  <script src="src/javascript/about.js" defer></script>
+  <script src="src/javascript/contact.js" defer></script>
+  <!-- Modal JS -->
+  <script src="src/javascript/modal.js" defer></script>
+  <!-- Policies JS -->
+  <script src="src/javascript/policies.js" defer></script>
+
+  <!-- Order Modal Markup -->
+  <div id="order-modal" class="order-modal" aria-hidden="true">
+    <div class="order-modal-card" role="dialog" aria-modal="true">
+      <div class="order-modal-header">
+        <div class="order-modal-logo"><img src="images/198957da308ca8300bab9a2d87953371f5117f46.png" alt="Credo's logo"></div>
+        <div class="order-modal-title">Titre</div>
+      </div>
+      <div class="order-modal-body"></div>
+      <div class="order-modal-actions"></div>
+      <div class="order-modal-footer">merci pour votre commande ! à bientôt chez Credo's</div>
+      <button class="order-modal-close" aria-label="Fermer la fenêtre">✕</button>
+    </div>
+  </div>
+
+  <!-- Help Modal -->
+  <div id="help-modal" aria-hidden="true" class="help-modal">
+    <div class="order-modal-card" role="dialog" aria-modal="true">
+      <div class="order-modal-header">
+        <div class="order-modal-logo"><img src="images/198957da308ca8300bab9a2d87953371f5117f46.png" alt="Credo's logo"></div>
+        <div class="order-modal-title">Aide : Comment commander</div>
+      </div>
+      <div class="order-modal-body">
+        <div class="order-modal-description">
+          <h4>Étapes pour commander</h4>
+          <ol>
+            <li>Parcourir les plats et cliquer sur une vignette ou sur le bouton <strong>Commander</strong>.</li>
+            <li>Dans la fenêtre qui s'ouvre, vérifiez les détails du plat.</li>
+            <li>Choisissez <strong>Commander via WhatsApp</strong> pour envoyer un message prérempli à Credo's, ou <strong>Commander via email</strong> pour ouvrir votre client mail.</li>
+            <li>Après envoi, nos équipes confirment la commande et discutent des modalités de paiement et de livraison avec vous.</li>
+          </ol>
+          <h4>Informations utiles</h4>
+          <p>Nous livrons partout à Lubumbashi. Pour les événements, demandez notre service traiteur : équipe certifiée, menus personnalisés et livraison sur site.</p>
+          <h4>Paiement</h4>
+          <p>La commande se confirme par message avec Credo's — vous convenez ensemble du mode de paiement (espèces à la livraison, mobile money, ou autre selon accord).</p>
+        </div>
+      </div>
+      <div class="order-modal-actions">
+        <button class="order-modal-close">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating buttons: gallery, mini-cart, help -->
+  <!-- Floating buttons: gallery, mini-cart, help, theme switcher -->
+  <button id="gallery-btn" class="floating-btn gallery" aria-label="Galerie plats">
+    <img src="images/icon-gallery.svg" alt="Galerie" width="22" height="22">
+  </button>
+  <div id="mini-cart" class="mini-cart" title="Panier">
+    <span class="count">0</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6h15l-1.5 9h-12L6 6z" stroke="#ffd400" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <button id="help-btn" class="floating-btn help" aria-label="Aide">
+    <img src="images/icon-help.svg" alt="Aide" width="22" height="22">
+  </button>
+  <button id="theme-btn" class="floating-btn theme" aria-label="Changer le thème">
+    <img src="images/icon-moon.svg" alt="Thème sombre" width="22" height="22">
+  </button>
+
+  <!-- Cart Modal -->
+  <div id="cart-modal" class="cart-modal" aria-hidden="true">
+    <div class="order-modal-card" role="dialog" aria-modal="true">
+      <div class="order-modal-header">
+        <div class="order-modal-logo"><img src="images/198957da308ca8300bab9a2d87953371f5117f46.png" alt="Credo's logo"></div>
+        <div class="order-modal-title">Votre panier</div>
+      </div>
+      <div class="order-modal-body">
+        <div class="cart-list" id="cart-list"></div>
+      </div>
+      <div class="cart-actions">
+        <button id="send-cart-wa" class="order-btn whatsapp">Envoyer via WhatsApp</button>
+        <button id="send-cart-email" class="order-btn email">Envoyer via Email</button>
+        <button id="empty-cart" class="order-btn danger">Vider le panier</button>
+        <button class="order-modal-close">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy & Terms Modals -->
+  <div id="privacy-modal" class="help-modal" aria-hidden="true">
+    <div class="order-modal-card" role="dialog" aria-modal="true">
+      <div class="order-modal-header">
+        <div class="order-modal-title">Politique de confidentialité</div>
+      </div>
+      <div class="order-modal-body">
+        <div class="order-modal-description">
+          <p>Nous respectons votre vie privée. Nous collectons uniquement les informations nécessaires pour traiter votre commande (nom, téléphone, adresse, détails de commande). Nous ne partageons pas vos données avec des tiers sans votre consentement.</p>
+          <p>Pour toute demande liée à vos données, contactez-nous à Credosfood@gmail.com.</p>
+        </div>
+      </div>
+      <div class="order-modal-actions"><button class="order-modal-close">Fermer</button></div>
+    </div>
+  </div>
+
+  <div id="terms-modal" class="help-modal" aria-hidden="true">
+    <div class="order-modal-card" role="dialog" aria-modal="true">
+      <div class="order-modal-header">
+        <div class="order-modal-title">Conditions d'utilisation</div>
+      </div>
+      <div class="order-modal-body">
+        <div class="order-modal-description">
+          <p>En utilisant ce site, vous acceptez que les commandes sont confirmées par message et que les modalités de paiement sont convenues avec Credo's. Les plats sont préparés selon nos recettes et les photos sont à titre indicatif.</p>
+          <p>Credo's décline toute responsabilité en cas d'erreurs de saisie de commande par l'utilisateur.</p>
+        </div>
+      </div>
+      <div class="order-modal-actions"><button class="order-modal-close">Fermer</button></div>
+    </div>
+  </div>
+</body>
+</html>

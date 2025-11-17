@@ -1,0 +1,190 @@
+<!-- Hero Section -->
+<!-- produit par glancedaniel55@gmail.com | 0851524080 -->
+<section id="hero" class="hero-section">
+  <!-- hero-bg-right removed per design request (rectangle removed) -->
+  <img src="images/320_120.svg" alt="Blur effect" class="decorative-blur hero-blur-1">
+  <img src="images/320_121.svg" alt="Blur effect" class="decorative-blur hero-blur-2">
+  <img src="images/320_118.svg" alt="Blur effect" class="decorative-blur hero-blur-3">
+
+  <div class="container hero-container">
+    <div class="hero-content">
+      <h2 class="hero-subtitle">{{ hero_subtitle }}</h2>
+      <h1 class="hero-title">{{ hero_title }}</h1>
+      <div class="hero-divider">
+        <div class="hero-divider-yellow"></div>
+        <div class="hero-divider-black"></div>
+      </div>
+      <p class="hero-tagline">{{ hero_tagline | safe }}</p>
+    </div>
+    <div class="hero-image-wrapper">
+      <div class="hero-image-container">
+        <img src="{{ hero_secondary_image }}" alt="Burger ingredients" class="hero-image-secondary">
+        <img src="{{ hero_primary_image }}" alt="Delicious burger" class="hero-image-primary">
+      </div>
+      <a href="#" class="hero-cta-button" data-modal-type="general">
+        <span class="hero-cta-text">{{ cta_button_text }}</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-extra-info delivery-info">
+    <div class="delivery-icon-wrapper">
+      <img src="{{ delivery_icon }}" alt="Delivery Scooter">
+    </div>
+    <span>{{ delivery_text }}</span>
+  </div>
+
+  <div class="hero-extra-info trust-badge">
+    <img src="images/333_83.svg" alt="Hamburger icon">
+    <span>{{ trust_badge_text }}</span>
+  </div>
+</section>
+
+<!-- Dishes Section -->
+<section id="dishes" class="dishes-section">
+  <img src="images/325_141.svg" alt="Blur effect" class="decorative-blur dishes-blur-1">
+  <img src="images/325_138.svg" alt="Blur effect" class="decorative-blur dishes-blur-2">
+  <img src="images/8e281d0dd426b2af9a8b080164c6354f7dfbc167.png" alt="Smoke effect" class="dishes-smoke-bg">
+
+  <div class="container">
+    <div class="section-title">
+      <span class="tagline">{{ dishes_tagline }}</span>
+      <h2 class="heading">{{ dishes_heading }}</h2>
+      <p class="subheading">{{ dishes_subheading }}</p>
+    </div>
+    <div class="dishes-grid">
+      <!-- Uniform dish cards: presentation like Sandwich (image + text + button) -->
+
+      <!-- Chicken Card -->
+      <article class="dish-card card-chicken">
+        <div class="card-content">
+          <h3 class="dish-title">{{ chicken_title }}</h3>
+          <p class="dish-description">{{ chicken_description }}</p>
+          <div class="dish-price">8 000 FC</div>
+        </div>
+        <img loading="lazy" src="images/2a10d093087dbfd5831ac4b2a598934cbea8c909.png" alt="Poulet" class="dish-image">
+        <div class="dish-action">
+          <a href="#" class="dish-button" data-modal-type="dish" data-dish-name="{{ chicken_title }}" data-dish-desc="{{ chicken_description }}" data-dish-img="images/2a10d093087dbfd5831ac4b2a598934cbea8c909.png" data-dish-prices='{"Standard":8000}'>{{ chicken_button }}</a>
+        </div>
+      </article>
+
+      <!-- Burger Card -->
+      <article class="dish-card card-burger">
+        <div class="card-content">
+          <h3 class="dish-title">{{ sides_title }}</h3>
+          <p class="dish-description">{{ sides_description }}</p>
+          <div class="dish-prices">
+            <span class="price-variant">Bergur simple : <strong>10 000 FC</strong></span>
+            <span class="price-variant">Bergur double cheese : <strong>20 000 FC</strong></span>
+          </div>
+        </div>
+        <img loading="lazy" src="images/888bc5a5f08099437edc690608679c73ae117689.png" alt="Burger" class="dish-image">
+        <div class="dish-action">
+          <a href="#" class="dish-button" data-modal-type="dish" data-dish-name="{{ sides_title }}" data-dish-desc="{{ sides_description }}" data-dish-img="images/888bc5a5f08099437edc690608679c73ae117689.png" data-dish-prices='{"Simple":10000,"Double Cheese":20000}'>{{ sides_link_text }}</a>
+        </div>
+      </article>
+
+      <!-- Salad Card -->
+      <article class="dish-card card-salad">
+        <div class="card-content">
+          <h3 class="dish-title">{{ salad_title }}</h3>
+          <p class="dish-description">{{ salad_description }}</p>
+          <div class="dish-prices">
+            <span class="price-variant">Accompagnement : <strong>6 000 FC</strong></span>
+          </div>
+        </div>
+        <img loading="lazy" src="images/a731aaefa4520d8d8ba883a416fd376f2a7ffcb6.png" alt="Salade" class="dish-image">
+        <div class="dish-action">
+          <a href="#" class="dish-button" data-modal-type="dish" data-dish-name="{{ salad_title }}" data-dish-desc="{{ salad_description }}" data-dish-img="images/a731aaefa4520d8d8ba883a416fd376f2a7ffcb6.png" data-dish-prices='{"Accompagnement":6000}'>{{ salad_button }}</a>
+        </div>
+      </article>
+
+      <!-- Sandwich Card -->
+      <article class="dish-card card-sandwich">
+        <div class="card-content">
+          <h3 class="dish-title">{{ sandwich_title }}</h3>
+          <p class="dish-description">{{ sandwich_description }}</p>
+          <div class="dish-prices">
+            <span class="price-variant">Lite : <strong>3 500 FC</strong></span>
+            <span class="price-variant">Bazooka : <strong>6 000 FC</strong></span>
+          </div>
+        </div>
+        <img loading="lazy" src="images/272a72cc85e504f496f31ebd406db1538266507a.png" alt="Sandwich" class="dish-image">
+        <div class="dish-action">
+          <a href="#" class="dish-button" data-modal-type="dish" data-dish-name="{{ sandwich_title }}" data-dish-desc="{{ sandwich_description }}" data-dish-img="images/272a72cc85e504f496f31ebd406db1538266507a.png" data-dish-prices='{"Lite":3500,"Bazooka":6000}'>{{ sandwich_button }}</a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Commander Button -->
+    <div class="dishes-commander-wrapper">
+      <a href="#" class="dishes-commander-button" data-modal-type="general">Commander</a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials-section">
+  <img src="images/344_72.svg" alt="Blur effect" class="decorative-blur testimonials-blur-1">
+  <img src="images/344_74.svg" alt="Blur effect" class="decorative-blur testimonials-blur-2">
+  <img src="images/325_144.svg" alt="Blur effect" class="decorative-blur testimonials-blur-3">
+
+  <div class="container">
+    <div class="section-title">
+      <h2 class="heading">{{ testimonials_heading }}</h2>
+      <p class="subheading">{{ testimonials_subheading }}</p>
+    </div>
+    <div class="testimonials-grid">
+      {% for testimonial in testimonials %}
+      <article class="testimonial-card">
+        <img src="{{ testimonial.stars_image }}" alt="5 stars rating" class="testimonial-stars">
+        <blockquote class="testimonial-quote">{{ testimonial.quote }}</blockquote>
+        <div class="testimonial-author">
+          <img src="{{ testimonial.avatar }}" alt="Avatar of {{ testimonial.name }}" class="author-avatar">
+          <div class="author-info">
+            <cite class="author-name">{{ testimonial.name }}</cite>
+            <span class="author-title">{{ testimonial.title }}</span>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <img src="images/344_137.svg" alt="Blur effect" class="decorative-blur contact-blur-1">
+  <img src="images/344_139.svg" alt="Blur effect" class="decorative-blur contact-blur-2">
+
+  <div class="container">
+    <div class="section-title">
+      <span class="tagline">{{ contact_tagline }}</span>
+      <h2 class="heading">{{ contact_heading }}</h2>
+      <p class="subheading">{{ contact_subheading }}</p>
+    </div>
+    <div class="contact-content-wrapper">
+      <div class="contact-info-list">
+        {% for contact_item in contact_items %}
+        <div class="contact-item">
+          <img src="{{ contact_item.icon }}" alt="{{ contact_item.title }} icon" class="contact-icon">
+          <div class="contact-details">
+            <h3 class="contact-title">{{ contact_item.title }}</h3>
+            {% if contact_item.type == 'email' %}
+            <a href="mailto:{{ contact_item.value }}" class="contact-link">{{ contact_item.value }}</a>
+            {% elif contact_item.type == 'phone' %}
+            <a href="tel:{{ contact_item.value_raw }}" class="contact-link">{{ contact_item.value }}</a>
+            {% else %}
+            <p class="contact-text">{{ contact_item.value }}</p>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="contact-map">
+        <img src="images/6647126ee77fd221ebd16f9c82d5b40869d98750.png" alt="Map location">
+      </div>
+    </div>
+  </div>
+</section>
