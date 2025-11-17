@@ -35,7 +35,6 @@
       { name: 'Salade', img: 'images/a731aaefa4520d8d8ba883a416fd376f2a7ffcb6.png', desc: 'Salade croquante mêlant légumes frais, herbes parfumées et une vinaigrette légère — parfaite pour une pause saine.', prices: { Accompagnement: 6000 } },
       { name: 'Sandwich', img: 'images/272a72cc85e504f496f31ebd406db1538266507a.png', desc: 'Sandwich généreux, pain toasté, viande savoureuse et condiments maison — un classique réconfortant.', prices: { Lite: 3500, Bazooka: 6000 } },
       // Nouveaux plats populaires (images locales)
-      { name: 'Burrito', img: 'images/burrito.jpg', desc: 'Burrito généreux garni de riz, haricots, viande épicée, légumes et sauce crémeuse — nourrissant et plein de saveurs.', prices: { Mini: 10000, Complet: 20000 } },
       { name: 'Shawarma', img: 'images/shawarma.jpg', desc: 'Shawarma tendre, finement tranché et servi avec pain pita, légumes frais et sauce à l\'ail — la street-food revisitée.', prices: { Mini: 10000, Complet: 20000 } },
       // 'Tenders' removed from public menu
     ];

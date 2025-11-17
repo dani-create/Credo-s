@@ -6,7 +6,6 @@ const DISH_TRANSLATIONS = {
     'Salade': 'Salade croquante mêlant légumes frais, herbes parfumées et une vinaigrette légère — parfaite pour une pause saine.',
     'Burger': 'Burger juteux garni de fromage fondant, pickles croquants et notre sauce secrète — une bouchée inoubliable.',
     'Poulet': 'Poulet croustillant, mariné aux épices locales et frit à la perfection — croustillant dehors, tendre dedans.',
-    'Burrito': 'Burrito généreux garni de riz, haricots, viande épicée, légumes et sauce crémeuse — nourrissant et plein de saveurs.',
     'Shawarma': 'Shawarma tendre, finement tranché et servi avec pain pita, légumes frais et sauce à l\'ail — la street-food revisitée.',
     // 'Tenders' removed
   },
@@ -15,7 +14,6 @@ const DISH_TRANSLATIONS = {
     'Salad': 'Crispy salad mixing fresh vegetables, fragrant herbs and light vinaigrette — perfect for a healthy break.',
     'Burger': 'Juicy burger topped with melted cheese, crispy pickles and our secret sauce — an unforgettable bite.',
     'Chicken': 'Crispy chicken, marinated with local spices and fried to perfection — crispy outside, tender inside.',
-    'Burrito': 'Generous burrito filled with rice, beans, spicy meat, vegetables and creamy sauce — nourishing and full of flavors.',
     'Shawarma': 'Tender shawarma, finely sliced and served with pita bread, fresh vegetables and garlic sauce — street-food revisited.',
     // 'Tenders' removed
   }

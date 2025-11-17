@@ -12,7 +12,7 @@ from translations import get_all_translations, get_translation
 class CredosRenderer:
     """Handle rendering of HTML templates using Jinja2"""
     
-    def __init__(self, template_dir='templates'):
+    def __init__(self, template_dir='src/templates'):
         """
         Initialize the Jinja2 environment
         
@@ -119,9 +119,6 @@ def get_context_data(language='fr'):
         'sandwich_title': trans.get('sandwich_title', 'Sandwichs incroyables'),
         'sandwich_description': trans.get('sandwich_description', 'Pain toasté'),
         'sandwich_button': trans.get('sandwich_button', 'Découvrir'),
-        'burrito_title': trans.get('burrito_title', 'Burrito gourmand'),
-        'burrito_description': trans.get('burrito_description', 'Tortilla généreuse'),
-        'burrito_button': trans.get('burrito_button', 'Découvrir'),
         'shawarma_title': trans.get('shawarma_title', 'Shawarma savoureux'),
         'shawarma_description': trans.get('shawarma_description', 'Viande marinée'),
         'shawarma_button': trans.get('shawarma_button', 'Découvrir'),
@@ -228,8 +225,8 @@ def get_context_data(language='fr'):
 def main():
     """Main function to render the complete website"""
     
-    # Initialize renderer
-    renderer = CredosRenderer('templates')
+    # Initialize renderer (now points to src/templates after repo reorganization)
+    renderer = CredosRenderer('src/templates')
     
     print("="*60)
     print("Credo's Website - Rendering with Jinja2")
