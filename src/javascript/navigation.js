@@ -52,7 +52,7 @@
     if (clickedToggle) {
       // Prevent default navigation if the toggle is inside or overlaps an anchor
       e.preventDefault();
-      e.stopPropagation();
+      // Note: don't stopPropagation here to allow direct click handler to fire
       // ensure menuToggle reference points to the clicked element
       menuToggle = clickedToggle;
       toggleMenu();
