@@ -53,13 +53,9 @@
     }
   }
 
-  if (menuToggle) {
-    menuToggle.addEventListener('click', function (e) {
-      e.preventDefault();
-        e.stopPropagation();
-      toggleMenu();
-    });
-  }
+  // Menu toggle handled centrally in `src/javascript/navigation.js` to avoid
+  // duplicate handlers that could run both and cancel each other out.
+  // (Handler removed here on purpose.)
 
   // Ferme le menu si on clique en dehors
   document.addEventListener('click', (e) => {
