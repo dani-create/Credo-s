@@ -29,3 +29,30 @@ Déploiement
 - Les modifications ont été commitées et poussées sur `main` (si vous autorisez le push). Le site GitHub Pages sera mis à jour automatiquement après déploiement.
 
 Si vous voulez que je pousse les changements maintenant et vérifie le rendu en ligne, dites "oui, pousse" et je pousserai et lancerai une vérification HTTP sur l'URL de Pages.
+
+---
+
+### Update: Rendre les cartes de plats responsive (mobile)
+
+Problème
+- Sur mobile, certaines images de carte (ex: carte "Sandwich") pouvaient occuper trop d'espace vertical,
+  masquant le bouton d'action au bas de la carte.
+
+Correction appliquée
+- Les styles de `src/styles/sections.css` ont été modifiés pour :
+  - permettre aux cartes `.dish-card` d'avoir `height: auto` et `min-height` plutôt qu'une hauteur fixe;
+  - rendre les images `.dish-image` responsive (`width:100%`, `height:auto`, `max-height` sur petits écrans);
+  - ajuster les règles spécifiques aux petits écrans (`@media (max-width: 414px)`) pour garantir que le bouton reste visible.
+
+Pourquoi ça règle le problème
+- Les images s'adaptent désormais à la largeur de la carte et ne poussent plus le contenu hors du rendu visuel.
+- Le bouton est positionné en bas de la carte avec `margin-top: auto`, et la carte ajuste sa hauteur pour afficher le bouton.
+
+Tests recommandés
+1. Regénérer : `python render.py` puis démarrer le serveur local `python -m http.server 8000`.
+2. Ouvrir `http://localhost:8000` en mode responsive (ex: iPhone 8 / 375×667) et vérifier la carte "Sandwich" :
+   - l'image est redimensionnée (pas trop haute),
+   - le bouton est visible et cliquable.
+
+Déploiement
+- Je régénère et pousse les changements, puis je peux vérifier le rendu en ligne.
