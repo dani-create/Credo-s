@@ -38,9 +38,10 @@
   // Attach click on the toggle if present
   if (menuToggle) {
     menuToggle.addEventListener('click', function (e) {
-      // Prevent any default navigation and stop propagation to avoid accidental anchor activation
+      // Prevent any default navigation AND stop propagation to prevent event bubbling
+      // This ensures clicking the burger menu ONLY toggles the menu, nothing else
       e.preventDefault();
-      // Note: removed stopPropagation to allow click to be properly handled
+      e.stopPropagation();
       toggleMenu();
     });
   }
@@ -52,7 +53,7 @@
     if (clickedToggle) {
       // Prevent default navigation if the toggle is inside or overlaps an anchor
       e.preventDefault();
-      // Note: don't stopPropagation here to allow direct click handler to fire
+      e.stopPropagation();
       // ensure menuToggle reference points to the clicked element
       menuToggle = clickedToggle;
       toggleMenu();

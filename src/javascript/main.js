@@ -56,7 +56,7 @@
   if (menuToggle) {
     menuToggle.addEventListener('click', function (e) {
       e.preventDefault();
-      // Note: removed stopPropagation to allow event to propagate and be handled by delegation if needed
+        e.stopPropagation();
       toggleMenu();
     });
   }
