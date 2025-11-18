@@ -40,7 +40,7 @@
     menuToggle.addEventListener('click', function (e) {
       // Prevent any default navigation and stop propagation to avoid accidental anchor activation
       e.preventDefault();
-      e.stopPropagation();
+      // Note: removed stopPropagation to allow click to be properly handled
       toggleMenu();
     });
   }
