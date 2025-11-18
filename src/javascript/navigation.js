@@ -37,7 +37,12 @@
 
   // Attach click on the toggle if present
   if (menuToggle) {
-    menuToggle.addEventListener('click', toggleMenu);
+    menuToggle.addEventListener('click', function (e) {
+      // Prevent any default navigation and stop propagation to avoid accidental anchor activation
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMenu();
+    });
   }
 
   // Fallback: delegation - handle clicks on any current or future toggle elements
@@ -45,6 +50,9 @@
     const target = e.target;
     const clickedToggle = target.closest && target.closest('.menu-toggle');
     if (clickedToggle) {
+      // Prevent default navigation if the toggle is inside or overlaps an anchor
+      e.preventDefault();
+      e.stopPropagation();
       // ensure menuToggle reference points to the clicked element
       menuToggle = clickedToggle;
       toggleMenu();

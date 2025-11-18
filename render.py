@@ -95,10 +95,10 @@ def get_context_data(language='fr'):
         'hero_subtitle': trans.get('hero_subtitle', 'THE ULTIMATE'),
         'hero_title': trans.get('hero_title', "Credo's"),
         'hero_tagline': trans.get('hero_tagline', "Savoure l'instant"),
-        'hero_primary_image': 'images/888bc5a5f08099437edc690608679c73ae117689.png',
-        'hero_secondary_image': 'images/9e34eebf702416f68a6f139e70a6e9a249bc2061.png',
+        'hero_primary_image': 'src/images/888bc5a5f08099437edc690608679c73ae117689.png',
+        'hero_secondary_image': 'src/images/9e34eebf702416f68a6f139e70a6e9a249bc2061.png',
         'cta_button_text': trans.get('cta_button_text', 'Commander'),
-        'delivery_icon': 'images/fcfa40a94765381d6d2171f7ee9c1807b460e67d.png',
+        'delivery_icon': 'src/images/fcfa40a94765381d6d2171f7ee9c1807b460e67d.png',
         'delivery_text': trans.get('delivery_text', 'livraison partout'),
         'trust_badge_text': trans.get('trust_badge_text', 'people trust us'),
         
@@ -131,23 +131,23 @@ def get_context_data(language='fr'):
         'testimonials_subheading': trans.get('testimonials_subheading', 'Des témoignages qui racontent'),
         'testimonials': [
             {
-                'stars_image': 'images/307_511.svg',
+                'stars_image': 'src/images/307_511.svg',
                 'quote': 'Le meilleur poulet que j\'ai jamais goûté à Lubumbashi' if language == 'fr' else 'The best chicken I\'ve ever tasted in Lubumbashi',
-                'avatar': 'images/307_519.svg',
+                'avatar': 'src/images/307_519.svg',
                 'name': 'Jean Mukendi',
                 'title': 'Client régulier' if language == 'fr' else 'Regular customer'
             },
             {
-                'stars_image': 'images/307_525.svg',
+                'stars_image': 'src/images/307_525.svg',
                 'quote': 'Les sandwichs sont absolument incroyables' if language == 'fr' else 'The sandwiches are absolutely amazing',
-                'avatar': 'images/307_533.svg',
+                'avatar': 'src/images/307_533.svg',
                 'name': 'Marie Kasongo',
                 'title': 'Foodie locale' if language == 'fr' else 'Local foodie'
             },
             {
-                'stars_image': 'images/307_539.svg',
+                'stars_image': 'src/images/307_539.svg',
                 'quote': 'Un endroit qui capture l\'essence de la cuisine de Lubumbashi' if language == 'fr' else 'A place that captures the essence of Lubumbashi cuisine',
-                'avatar': 'images/307_547.svg',
+                'avatar': 'src/images/307_547.svg',
                 'name': 'Pierre Ntumba',
                 'title': 'Critique culinaire' if language == 'fr' else 'Culinary critic'
             }
@@ -160,20 +160,20 @@ def get_context_data(language='fr'):
         'contact_items': [
             {
                 'type': 'email',
-                'icon': 'images/307_562.svg',
+                'icon': 'src/images/307_562.svg',
                 'title': trans.get('contact_email_title', 'Email'),
                 'value': trans.get('contact_email_value', 'Credosfood@gmail.com')
             },
             {
                 'type': 'phone',
-                'icon': 'images/307_567.svg',
+                'icon': 'src/images/307_567.svg',
                 'title': trans.get('contact_phone_title', 'Téléphone'),
                 'value': trans.get('contact_phone_value', '+243 983308866 / +243 833589772'),
                 'value_raw': '+243983308866'
             },
             {
                 'type': 'address',
-                'icon': 'images/307_572.svg',
+                'icon': 'src/images/307_572.svg',
                 'title': trans.get('contact_address_title', 'Adresse'),
                 'value': trans.get('contact_address_value', 'Q. Kamatete')
             }

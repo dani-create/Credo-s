@@ -18,9 +18,9 @@
   <link rel="stylesheet" href="src/styles/overrides.css">
   <!-- Favicons and mobile meta -->
   <!-- Use relative paths (no leading slash) so favicon works on GitHub Pages subpath -->
-  <link rel="icon" type="image/png" href="images/198957da308ca8300bab9a2d87953371f5117f46.png" sizes="48x48">
-  <link rel="shortcut icon" href="images/198957da308ca8300bab9a2d87953371f5117f46.png" type="image/png">
-  <link rel="apple-touch-icon" href="images/198957da308ca8300bab9a2d87953371f5117f46.png">
+  <link rel="icon" type="image/png" href="src/images/198957da308ca8300bab9a2d87953371f5117f46.png" sizes="48x48">
+  <link rel="shortcut icon" href="src/images/198957da308ca8300bab9a2d87953371f5117f46.png" type="image/png">
+  <link rel="apple-touch-icon" href="src/images/198957da308ca8300bab9a2d87953371f5117f46.png">
   <meta name="theme-color" content="#ffd400">
   <meta name="msapplication-TileColor" content="#ffd400">
   <style id="sections-styles"></style>
@@ -31,7 +31,7 @@
   <div class="container header-container">
     <div class="logo-container">
       <a href="#hero" class="logo">
-        <img src="images/198957da308ca8300bab9a2d87953371f5117f46.png" alt="Credo's Logo" class="logo-img">
+        <img src="src/images/198957da308ca8300bab9a2d87953371f5117f46.png" alt="Credo's Logo" class="logo-img">
         <span class="logo-text">Credo&#39;s</span>
       </a>
     </div>
@@ -43,8 +43,8 @@
         <li><a href="#about">À propos</a></li>
       </ul>
     </nav>
-    <button class="menu-toggle menu-toggle-right" aria-label="Menu mobile">
-      <img src="images/333_74.svg" alt="Menu Burger Mobile">
+    <button type="button" class="menu-toggle menu-toggle-right" aria-label="Menu mobile">
+      <img src="src/images/333_74.svg" alt="Menu Burger Mobile">
     </button>
   </div>
 </header>
@@ -53,9 +53,9 @@
 <!-- produit par glancedaniel55@gmail.com | 0851524080 -->
 <section id="hero" class="hero-section">
   <!-- hero-bg-right removed per design request (rectangle removed) -->
-  <img src="images/320_120.svg" alt="Blur effect" class="decorative-blur hero-blur-1">
-  <img src="images/320_121.svg" alt="Blur effect" class="decorative-blur hero-blur-2">
-  <img src="images/320_118.svg" alt="Blur effect" class="decorative-blur hero-blur-3">
+  <img src="src/images/320_120.svg" alt="Blur effect" class="decorative-blur hero-blur-1">
+  <img src="src/images/320_121.svg" alt="Blur effect" class="decorative-blur hero-blur-2">
+  <img src="src/images/320_118.svg" alt="Blur effect" class="decorative-blur hero-blur-3">
 
   <div class="container hero-container">
     <div class="hero-content">
@@ -69,8 +69,8 @@
     </div>
     <div class="hero-image-wrapper">
       <div class="hero-image-container">
-        <img src="images/9e34eebf702416f68a6f139e70a6e9a249bc2061.png" alt="Burger ingredients" class="hero-image-secondary">
-        <img src="images/888bc5a5f08099437edc690608679c73ae117689.png" alt="Delicious burger" class="hero-image-primary">
+        <img src="src/images/9e34eebf702416f68a6f139e70a6e9a249bc2061.png" alt="Burger ingredients" class="hero-image-secondary">
+        <img src="src/images/888bc5a5f08099437edc690608679c73ae117689.png" alt="Delicious burger" class="hero-image-primary">
       </div>
       <a href="#" class="hero-cta-button" data-modal-type="general">
         <span class="hero-cta-text">Commander</span>
@@ -80,22 +80,22 @@
 
   <div class="hero-extra-info delivery-info">
     <div class="delivery-icon-wrapper">
-      <img src="images/fcfa40a94765381d6d2171f7ee9c1807b460e67d.png" alt="Delivery Scooter">
+      <img src="src/images/fcfa40a94765381d6d2171f7ee9c1807b460e67d.png" alt="Delivery Scooter">
     </div>
     <span>livraison partout à Lubumbashi</span>
   </div>
 
   <div class="hero-extra-info trust-badge">
-    <img src="images/333_83.svg" alt="Hamburger icon">
+    <img src="src/images/333_83.svg" alt="Hamburger icon">
     <span>people trust us</span>
   </div>
 </section>
 
 <!-- Dishes Section -->
 <section id="dishes" class="dishes-section">
-  <img src="images/325_141.svg" alt="Blur effect" class="decorative-blur dishes-blur-1">
-  <img src="images/325_138.svg" alt="Blur effect" class="decorative-blur dishes-blur-2">
-  <img src="images/8e281d0dd426b2af9a8b080164c6354f7dfbc167.png" alt="Smoke effect" class="dishes-smoke-bg">
+  <img src="src/images/325_141.svg" alt="Blur effect" class="decorative-blur dishes-blur-1">
+  <img src="src/images/325_138.svg" alt="Blur effect" class="decorative-blur dishes-blur-2">
+  <img src="src/images/8e281d0dd426b2af9a8b080164c6354f7dfbc167.png" alt="Smoke effect" class="dishes-smoke-bg">
 
   <div class="container">
     <div class="section-title">
@@ -113,9 +113,9 @@
           <p class="dish-description">Préparé avec des épices locales et une recette secrète — croustillant, parfumé et prêt à partager.</p>
           <div class="dish-price">8 000 FC</div>
         </div>
-        <img loading="lazy" src="images/2a10d093087dbfd5831ac4b2a598934cbea8c909.png" alt="Poulet" class="dish-image">
+        <img loading="lazy" src="src/images/2a10d093087dbfd5831ac4b2a598934cbea8c909.png" alt="Poulet" class="dish-image">
         <div class="dish-action">
-          <a href="#" class="dish-button" data-modal-type="dish" data-dish-name="Notre poulet spécial" data-dish-desc="Préparé avec des épices locales et une recette secrète — croustillant, parfumé et prêt à partager." data-dish-img="images/2a10d093087dbfd5831ac4b2a598934cbea8c909.png" data-dish-prices='{"Standard":8000}'>Découvrir</a>
+          <a href="#" class="dish-button" data-modal-type="dish" data-dish-name="Notre poulet spécial" data-dish-desc="Préparé avec des épices locales et une recette secrète — croustillant, parfumé et prêt à partager." data-dish-img="src/images/2a10d093087dbfd5831ac4b2a598934cbea8c909.png" data-dish-prices='{"Standard":8000}'>Découvrir</a>
         </div>
       </article>
 
@@ -129,9 +129,9 @@
             <span class="price-variant">Bergur double cheese : <strong>20 000 FC</strong></span>
           </div>
         </div>
-        <img loading="lazy" src="images/888bc5a5f08099437edc690608679c73ae117689.png" alt="Burger" class="dish-image">
+        <img loading="lazy" src="src/images/888bc5a5f08099437edc690608679c73ae117689.png" alt="Burger" class="dish-image">
         <div class="dish-action">
-          <a href="#" class="dish-button" data-modal-type="dish" data-dish-name="Burger" data-dish-desc="Burger juteux garni de fromage fondant, légumes frais et notre sauce secrète — le classique qui réconforte à chaque bouchée." data-dish-img="images/888bc5a5f08099437edc690608679c73ae117689.png" data-dish-prices='{"Simple":10000,"Double Cheese":20000}'>Explorer</a>
+          <a href="#" class="dish-button" data-modal-type="dish" data-dish-name="Burger" data-dish-desc="Burger juteux garni de fromage fondant, légumes frais et notre sauce secrète — le classique qui réconforte à chaque bouchée." data-dish-img="src/images/888bc5a5f08099437edc690608679c73ae117689.png" data-dish-prices='{"Simple":10000,"Double Cheese":20000}'>Explorer</a>
         </div>
       </article>
 
@@ -144,9 +144,9 @@
             <span class="price-variant">Accompagnement : <strong>6 000 FC</strong></span>
           </div>
         </div>
-        <img loading="lazy" src="images/a731aaefa4520d8d8ba883a416fd376f2a7ffcb6.png" alt="Salade" class="dish-image">
+        <img loading="lazy" src="src/images/a731aaefa4520d8d8ba883a416fd376f2a7ffcb6.png" alt="Salade" class="dish-image">
         <div class="dish-action">
-          <a href="#" class="dish-button" data-modal-type="dish" data-dish-name="Salade fraîche" data-dish-desc="Salade croquante aux légumes de saison, vinaigrette maison légère — parfaite pour accompagner ou pour une option saine." data-dish-img="images/a731aaefa4520d8d8ba883a416fd376f2a7ffcb6.png" data-dish-prices='{"Accompagnement":6000}'>Découvrir</a>
+          <a href="#" class="dish-button" data-modal-type="dish" data-dish-name="Salade fraîche" data-dish-desc="Salade croquante aux légumes de saison, vinaigrette maison légère — parfaite pour accompagner ou pour une option saine." data-dish-img="src/images/a731aaefa4520d8d8ba883a416fd376f2a7ffcb6.png" data-dish-prices='{"Accompagnement":6000}'>Découvrir</a>
         </div>
       </article>
 
@@ -160,9 +160,9 @@
             <span class="price-variant">Bazooka : <strong>6 000 FC</strong></span>
           </div>
         </div>
-        <img loading="lazy" src="images/272a72cc85e504f496f31ebd406db1538266507a.png" alt="Sandwich" class="dish-image">
+        <img loading="lazy" src="src/images/272a72cc85e504f496f31ebd406db1538266507a.png" alt="Sandwich" class="dish-image">
         <div class="dish-action">
-          <a href="#" class="dish-button" data-modal-type="dish" data-dish-name="Sandwichs incroyables" data-dish-desc="Pain toasté, garnitures maison et sauces qui font chanter chaque bouchée — simple et délicieux." data-dish-img="images/272a72cc85e504f496f31ebd406db1538266507a.png" data-dish-prices='{"Lite":3500,"Bazooka":6000}'>Découvrir</a>
+          <a href="#" class="dish-button" data-modal-type="dish" data-dish-name="Sandwichs incroyables" data-dish-desc="Pain toasté, garnitures maison et sauces qui font chanter chaque bouchée — simple et délicieux." data-dish-img="src/images/272a72cc85e504f496f31ebd406db1538266507a.png" data-dish-prices='{"Lite":3500,"Bazooka":6000}'>Découvrir</a>
         </div>
       </article>
 
@@ -177,9 +177,9 @@
 
 <!-- Testimonials Section -->
 <section id="testimonials" class="testimonials-section">
-  <img src="images/344_72.svg" alt="Blur effect" class="decorative-blur testimonials-blur-1">
-  <img src="images/344_74.svg" alt="Blur effect" class="decorative-blur testimonials-blur-2">
-  <img src="images/325_144.svg" alt="Blur effect" class="decorative-blur testimonials-blur-3">
+  <img src="src/images/344_72.svg" alt="Blur effect" class="decorative-blur testimonials-blur-1">
+  <img src="src/images/344_74.svg" alt="Blur effect" class="decorative-blur testimonials-blur-2">
+  <img src="src/images/325_144.svg" alt="Blur effect" class="decorative-blur testimonials-blur-3">
 
   <div class="container">
     <div class="section-title">
@@ -188,10 +188,10 @@
     </div>
     <div class="testimonials-grid">
       <article class="testimonial-card">
-        <img src="images/307_511.svg" alt="5 stars rating" class="testimonial-stars">
+        <img src="src/images/307_511.svg" alt="5 stars rating" class="testimonial-stars">
         <blockquote class="testimonial-quote">Le meilleur poulet que j&#39;ai jamais goûté à Lubumbashi</blockquote>
         <div class="testimonial-author">
-          <img src="images/307_519.svg" alt="Avatar of Jean Mukendi" class="author-avatar">
+          <img src="src/images/307_519.svg" alt="Avatar of Jean Mukendi" class="author-avatar">
           <div class="author-info">
             <cite class="author-name">Jean Mukendi</cite>
             <span class="author-title">Client régulier</span>
@@ -199,10 +199,10 @@
         </div>
       </article>
       <article class="testimonial-card">
-        <img src="images/307_525.svg" alt="5 stars rating" class="testimonial-stars">
+        <img src="src/images/307_525.svg" alt="5 stars rating" class="testimonial-stars">
         <blockquote class="testimonial-quote">Les sandwichs sont absolument incroyables</blockquote>
         <div class="testimonial-author">
-          <img src="images/307_533.svg" alt="Avatar of Marie Kasongo" class="author-avatar">
+          <img src="src/images/307_533.svg" alt="Avatar of Marie Kasongo" class="author-avatar">
           <div class="author-info">
             <cite class="author-name">Marie Kasongo</cite>
             <span class="author-title">Foodie locale</span>
@@ -210,10 +210,10 @@
         </div>
       </article>
       <article class="testimonial-card">
-        <img src="images/307_539.svg" alt="5 stars rating" class="testimonial-stars">
+        <img src="src/images/307_539.svg" alt="5 stars rating" class="testimonial-stars">
         <blockquote class="testimonial-quote">Un endroit qui capture l&#39;essence de la cuisine de Lubumbashi</blockquote>
         <div class="testimonial-author">
-          <img src="images/307_547.svg" alt="Avatar of Pierre Ntumba" class="author-avatar">
+          <img src="src/images/307_547.svg" alt="Avatar of Pierre Ntumba" class="author-avatar">
           <div class="author-info">
             <cite class="author-name">Pierre Ntumba</cite>
             <span class="author-title">Critique culinaire</span>
@@ -226,8 +226,8 @@
 
 <!-- Contact Section -->
 <section id="contact" class="contact-section">
-  <img src="images/344_137.svg" alt="Blur effect" class="decorative-blur contact-blur-1">
-  <img src="images/344_139.svg" alt="Blur effect" class="decorative-blur contact-blur-2">
+  <img src="src/images/344_137.svg" alt="Blur effect" class="decorative-blur contact-blur-1">
+  <img src="src/images/344_139.svg" alt="Blur effect" class="decorative-blur contact-blur-2">
 
   <div class="container">
     <div class="section-title">
@@ -238,21 +238,21 @@
     <div class="contact-content-wrapper">
       <div class="contact-info-list">
         <div class="contact-item">
-          <img src="images/307_562.svg" alt="Email icon" class="contact-icon">
+          <img src="src/images/307_562.svg" alt="Email icon" class="contact-icon">
           <div class="contact-details">
             <h3 class="contact-title">Email</h3>
             <a href="mailto:Credosfood@gmail.com" class="contact-link">Credosfood@gmail.com</a>
           </div>
         </div>
         <div class="contact-item">
-          <img src="images/307_567.svg" alt="Téléphone icon" class="contact-icon">
+          <img src="src/images/307_567.svg" alt="Téléphone icon" class="contact-icon">
           <div class="contact-details">
             <h3 class="contact-title">Téléphone</h3>
             <a href="tel:+243983308866" class="contact-link">+243 983308866 / +243 833589772</a>
           </div>
         </div>
         <div class="contact-item">
-          <img src="images/307_572.svg" alt="Adresse icon" class="contact-icon">
+          <img src="src/images/307_572.svg" alt="Adresse icon" class="contact-icon">
           <div class="contact-details">
             <h3 class="contact-title">Adresse</h3>
             <p class="contact-text">Q. Kamatete, Rue. Arc-en-ciel Lubumbashi, République Démocratique du Congo.</p>
@@ -260,7 +260,7 @@
         </div>
       </div>
       <div class="contact-map">
-        <img src="images/6647126ee77fd221ebd16f9c82d5b40869d98750.png" alt="Map location">
+        <img src="src/images/6647126ee77fd221ebd16f9c82d5b40869d98750.png" alt="Map location">
       </div>
     </div>
   </div>
@@ -268,8 +268,8 @@
   <!-- About Include -->
 <!-- About Section -->
 <section id="about" class="about-section">
-  <img src="images/344_147.svg" alt="Blur effect" class="decorative-blur about-blur-1">
-  <img src="images/344_149.svg" alt="Blur effect" class="decorative-blur about-blur-2">
+  <img src="src/images/344_147.svg" alt="Blur effect" class="decorative-blur about-blur-1">
+  <img src="src/images/344_149.svg" alt="Blur effect" class="decorative-blur about-blur-2">
 
   <div class="container">
     <div class="section-title">
@@ -299,13 +299,13 @@
 </section>
   <!-- Footer Include -->
 <footer id="footer" class="site-footer-main">
-  <img src="images/344_147.svg" alt="Blur effect" class="decorative-blur footer-blur-1">
-  <img src="images/344_149.svg" alt="Blur effect" class="decorative-blur footer-blur-2">
+  <img src="src/images/344_147.svg" alt="Blur effect" class="decorative-blur footer-blur-1">
+  <img src="src/images/344_149.svg" alt="Blur effect" class="decorative-blur footer-blur-2">
   <div class="container">
     <div class="footer-top">
       <div class="footer-info">
         <a href="#" class="footer-logo">
-          <img src="images/198957da308ca8300bab9a2d87953371f5117f46.png" alt="Credo's Logo">
+          <img src="src/images/198957da308ca8300bab9a2d87953371f5117f46.png" alt="Credo's Logo">
         </a>
         <nav class="footer-nav">
           <ul>
@@ -351,7 +351,7 @@
   <div id="order-modal" class="order-modal" aria-hidden="true">
     <div class="order-modal-card" role="dialog" aria-modal="true">
       <div class="order-modal-header">
-        <div class="order-modal-logo"><img src="images/198957da308ca8300bab9a2d87953371f5117f46.png" alt="Credo's logo"></div>
+        <div class="order-modal-logo"><img src="src/images/198957da308ca8300bab9a2d87953371f5117f46.png" alt="Credo's logo"></div>
         <div class="order-modal-title">Titre</div>
       </div>
       <div class="order-modal-body"></div>
@@ -392,17 +392,17 @@
   <!-- Floating buttons: gallery, mini-cart, help -->
   <!-- Floating buttons: gallery, mini-cart, help, theme switcher -->
   <button id="gallery-btn" class="floating-btn gallery" aria-label="Galerie plats">
-    <img src="images/icon-gallery.svg" alt="Galerie" width="22" height="22">
+    <img src="src/images/icon-gallery.svg" alt="Galerie" width="22" height="22">
   </button>
   <div id="mini-cart" class="mini-cart" title="Panier">
     <span class="count">0</span>
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6h15l-1.5 9h-12L6 6z" stroke="#ffd400" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
   <button id="help-btn" class="floating-btn help" aria-label="Aide">
-    <img src="images/icon-help.svg" alt="Aide" width="22" height="22">
+    <img src="src/images/icon-help.svg" alt="Aide" width="22" height="22">
   </button>
   <button id="theme-btn" class="floating-btn theme" aria-label="Changer le thème">
-    <img src="images/icon-moon.svg" alt="Thème sombre" width="22" height="22">
+    <img src="src/images/icon-moon.svg" alt="Thème sombre" width="22" height="22">
   </button>
 
   <!-- Cart Modal -->

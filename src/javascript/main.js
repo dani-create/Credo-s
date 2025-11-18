@@ -6,14 +6,14 @@
     if (theme === 'light') {
       document.body.classList.add('theme-light');
       document.body.classList.remove('theme-dark');
-      themeBtn.querySelector('img').src = 'images/icon-sun.svg';
+      themeBtn.querySelector('img').src = 'src/images/icon-sun.svg';
       themeBtn.querySelector('img').alt = 'Thème clair';
       // Mode clair : fond transparent
       themeBtn.style.background = 'transparent';
     } else {
       document.body.classList.add('theme-dark');
       document.body.classList.remove('theme-light');
-      themeBtn.querySelector('img').src = 'images/icon-moon.svg';
+      themeBtn.querySelector('img').src = 'src/images/icon-moon.svg';
       themeBtn.querySelector('img').alt = 'Thème sombre';
       // Mode sombre : fond jaune vif pour visibilité
       themeBtn.style.background = '#FFD700';
@@ -54,7 +54,11 @@
   }
 
   if (menuToggle) {
-    menuToggle.addEventListener('click', toggleMenu);
+    menuToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleMenu();
+    });
   }
 
   // Ferme le menu si on clique en dehors
